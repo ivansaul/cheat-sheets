@@ -1,3 +1,6 @@
+# Custom
+*.g.dart
+
 # Miscellaneous
 *.class
 *.log
