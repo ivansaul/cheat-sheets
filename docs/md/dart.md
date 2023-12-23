@@ -14,13 +14,14 @@ intro: "A Dart cheat sheet with the most important concepts, functions, methods,
 
 ### hello.dart
 
+Every app has a `main()` function
+
 ```dart
 // top-level function where app execution starts
 void main(){
     print("Hello World!"); // Print to console
 }
 ```
-Every app has a main() function
 
 ### Variables
 
@@ -39,7 +40,7 @@ final String email = "temid@gmail.com"; // you can't change the value
 const qty = 5; // Compile-time constant
 ```
 
-### Datatypes
+### Data Types
 
 ```dart
 
@@ -53,14 +54,14 @@ print(num); //Print: 3.5
 
 String name = "Nicola";
 
-bool isFavourite = true;
+bool isFavorite = true;
 bool isLoaded = false;
 ```
 
 ### String interpolation
 
 ```dart
-// can use single or double qoutes for String type
+// can use single or double quotes for String type
 var firstName = 'Nicola';
 var lastName = "Tesla";
 
@@ -79,13 +80,14 @@ print(upperCase); //Print: NICOLA
 // This is a normal, one-line comment.
 
 /// This is a documentation comment, used to document libraries,
-/// classes, and their members. Tools like IDEs and dartdoc treat
+/// classes, and their members. Tools like IDEs and dart doc treat
 /// doc comments specially.
 
 /* Comments like these are also supported. */
 ```
 
 ### Imports
+
 ```dart
 // Importing core libraries
 import 'dart:math';
@@ -99,7 +101,7 @@ import 'path/to/my_other_file.dart';
 
 # Operators
 
-### Arithmatic Operators
+### Arithmetic Operators
 
 ```dart
 print(2 + 3); //Print: 5
@@ -115,8 +117,8 @@ b = ++a; // preIncrement - Increment a before b gets its value.
 b = a++; // postIncrement - Increment a AFTER b gets its value.
 
 //Decrement
-b = --a; // predecrement - Decrement a before b gets its value.
-b = a--; // postdecrement - Decrement a AFTER b gets its value.
+b = --a; // preDecrement - Decrement a before b gets its value.
+b = a--; // postDecrement - Decrement a AFTER b gets its value.
 ```
 
 ### Equality and relational operators
@@ -130,6 +132,7 @@ print(2 <= 3); //Print: true - Less than or equal to
 ```
 
 ### Logical operators
+
 ```dart
 // !expr inverts the expression (changes false to true, and vice versa)
 // ||	logical OR
@@ -174,8 +177,6 @@ switch(myPet){
 ```
 
 # Control Flows : Loops
-
-
 
 ### while loop
 
@@ -288,7 +289,7 @@ bool isFav(Product product) => favProductsList.contains(product);
 ### Anonymous (lambda) functions
 
 ```dart
-// small one line functions that dont have name
+// small one line functions that don't have name
 int add(a,b) => a+b;
 
 // lambda functions mostly passed as parameter to other functions
@@ -475,11 +476,11 @@ try {
 ### Async Await
 
 ```dart
-// functionswhich are asynchronous: they return after setting up a possibly time-consuming operation
+// functions which are asynchronous: they return after setting up a possibly time-consuming operation
 // The async and await keywords support asynchronous programming
 
 Future<String> login() {
- String userName="Temidjoy";
+ String userName="ivansaul";
  return
   Future.delayed(
     Duration(seconds: 4), () => userName);
@@ -516,7 +517,7 @@ print(null ?? 10); // Prints: 10. Display the value on the left if it's not null
 // condition ? exprIfTrue : exprIfFalse
 bool isAvailable;
 
-isAvailable ? orderproduct() : addToFavourite();
+isAvailable ? orderProduct() : addToFavorites();
 ```
 
 ### Spread Operator (...)
@@ -558,5 +559,5 @@ userObject?.userName
 //You can chain multiple uses of ?. together in a single expression
 userObject?.userName?.toString()
 
-// The preceeding code returns null and never calls toString() if either userObject or userObject.userName is null
+// The preceding code returns null and never calls toString() if either userObject or userObject.userName is null
 ```
