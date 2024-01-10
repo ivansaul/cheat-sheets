@@ -1,3 +1,4 @@
+import 'package:cheat_sheets/shared/widgets/cached_svg_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -42,8 +43,8 @@ class CustomListTile extends StatelessWidget {
             dense: true,
             contentPadding: contentPadding ?? const EdgeInsets.all(15),
             leading: (leadingIcon.startsWith('http'))
-                ? SvgPicture.network(
-                    leadingIcon,
+                ? CachedNetworkSvgPicture(
+                    url: leadingIcon,
                     height: leadingIconSize,
                     width: leadingIconSize,
                     fit: BoxFit.fitHeight,
@@ -51,13 +52,6 @@ class CustomListTile extends StatelessWidget {
                       Theme.of(context).iconTheme.color!,
                       BlendMode.srcIn,
                     ),
-                    placeholderBuilder: (context) {
-                      return SizedBox(
-                        width: leadingIconSize,
-                        height: leadingIconSize,
-                        child: const CircularProgressIndicator(),
-                      );
-                    },
                   )
                 : SvgPicture.asset(
                     leadingIcon,
