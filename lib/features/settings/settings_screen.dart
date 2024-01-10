@@ -65,6 +65,11 @@ class SettingsScreen extends ConsumerWidget {
               onTap: () => openLink(ConstantLinks.authorGithubLink),
             ),
             ListTile(
+              title: const Text('Special Thanks'),
+              subtitle: const Text('@Fechin/reference'),
+              onTap: () => openLink(ConstantLinks.specialThanksLink),
+            ),
+            ListTile(
               title: const Text('Contribute'),
               onTap: () => openLink(ConstantLinks.projectGithubLink),
             ),
