@@ -7,8 +7,7 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<List<CheatSheetModel>> getCheatSheets() async {
     final jsonString = await rootBundle.loadString('docs/data/data.json');
-    final data = await json.decode(jsonString) as Map<String, dynamic>;
-    final cheatSheetsJson = data['cheatSheets'] as List<dynamic>;
+    final cheatSheetsJson =await json.decode(jsonString) as List<dynamic>;
 
     List<CheatSheetModel> cheatSheets = [];
 
