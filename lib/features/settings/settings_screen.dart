@@ -1,5 +1,6 @@
 import 'package:cheat_sheets/config/theme/theme_provider.dart';
 import 'package:cheat_sheets/shared/constants/constants.dart';
+import 'package:cheat_sheets/shared/providers/app_info_provider.dart';
 import 'package:cheat_sheets/shared/utils/open_link.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +14,7 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDarkMode = ref.watch(isDarkModeProvider);
+    final appInfoAsync = ref.watch(appInfoProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
@@ -94,9 +96,16 @@ class SettingsScreen extends ConsumerWidget {
               ),
             ),
             const Gap(10),
-            const Align(
-              child: Text('Version 1.0.0'),
+            Align(
+              child: Text(
+                appInfoAsync.when(
+                  data: (state) => '${state.appName} v${state.version} (${state.buildNumber})',
+                  error: (_, __) => 'loading',
+                  loading: () => 'loading',
+                ),
+              ),
             ),
+            const Gap(10),
           ],
         ),
       ),
