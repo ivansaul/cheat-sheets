@@ -1,4 +1,4 @@
-package com.ivansaul.cheat_sheets
+package com.ivansaul.cheatsheets
 
 import io.flutter.embedding.android.FlutterActivity
 
