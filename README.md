@@ -21,7 +21,7 @@ cheat sheet for developers in a nice layout.
 <a href="https://play.google.com/apps/testing/com.ivansaul.cheatsheets">
     <img alt="Google Play Badge" src="https://i.imgur.com/Iv2gaww.png" height="50px">
 </a>
-
+<br/>
 <a href="https://discord.gg/tDvybtJ7y9">
     <img alt="Discord Server" height="50" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/social/discord-plural_vector.svg">
 </a>
