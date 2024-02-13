@@ -40,31 +40,14 @@ class CodeStyle extends _$CodeStyle {
   }
 
   void toggle(CodeStyleEnum codeStyle) {
-    switch (codeStyle) {
-      case CodeStyleEnum.darcula:
-        state = darculaTheme;
-        break;
-      case CodeStyleEnum.atomOneLight:
-        state = atomOneLightTheme;
-        break;
-      case CodeStyleEnum.atomOneDark:
-        state = atomOneDarkTheme;
-        break;
-      case CodeStyleEnum.vsCode:
-        state = vsTheme;
-        break;
-      case CodeStyleEnum.xCode:
-        state = xcodeTheme;
-        break;
-      case CodeStyleEnum.idea:
-        state = ideaTheme;
-        break;
-      case CodeStyleEnum.nord:
-        state = nordTheme;
-        break;
-      default:
-        state = darculaTheme;
-        break;
-    }
+    state = switch (codeStyle) {
+      CodeStyleEnum.darcula => darculaTheme,
+      CodeStyleEnum.atomOneLight => atomOneLightTheme,
+      CodeStyleEnum.atomOneDark => atomOneDarkTheme,
+      CodeStyleEnum.vsCode => vsTheme,
+      CodeStyleEnum.xCode => xcodeTheme,
+      CodeStyleEnum.idea => ideaTheme,
+      CodeStyleEnum.nord => nordTheme,
+    };
   }
 }
