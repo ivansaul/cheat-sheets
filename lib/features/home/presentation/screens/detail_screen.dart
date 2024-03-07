@@ -73,7 +73,7 @@ class DetailsScreen extends ConsumerWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
+        padding: const EdgeInsets.only(left: 10, right: 10),
         child: MarkdownWidget(
           padding: const EdgeInsets.all(10),
           data: section.content,
