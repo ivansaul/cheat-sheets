@@ -78,12 +78,12 @@ class CachedNetworkSvgPicture extends StatelessWidget {
   }
 
   Future<File> getImageData() async {
-    if (!forceRefresh) {
-      final file = await DefaultCacheManager().getSingleFile(url);
-      return file;
+    if (forceRefresh) {
+      final downloadedFile = await DefaultCacheManager().downloadFile(url, force: true);
+      return downloadedFile.file;
     }
-    final downloadedFile = await DefaultCacheManager().downloadFile(url, force: true);
-    return downloadedFile.file;
+    final file = await DefaultCacheManager().getSingleFile(url);
+    return file;
   }
 }
 
