@@ -10,5 +10,18 @@
         "roboto",
         "Schyler",
         "xcode"
-    ]
+    ],
+    "editor.formatOnSave": true,
+    "[dart]": {
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit",
+        },
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+        "pubspec.yaml": "pubspec.lock,pubspec_overrides.yaml,.packages,.flutter-plugins,.flutter-plugins-dependencies,.metadata",
+        "*.dart": "${capture}.g.dart, ${capture}.freezed.dart",
+    },
 }
