@@ -99,7 +99,8 @@ class SettingsScreen extends ConsumerWidget {
             Align(
               child: Text(
                 appInfoAsync.when(
-                  data: (state) => '${state.appName} v${state.version} (${state.buildNumber})',
+                  data: (state) =>
+                      '${state.appName} v${state.version} (${state.buildNumber})',
                   error: (_, __) => 'loading',
                   loading: () => 'loading',
                 ),
@@ -127,7 +128,10 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              title: Text('Light', style: Theme.of(context).textTheme.titleSmall),
+              title: Text(
+                'Light',
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
               leading: const Icon(Icons.light_mode_rounded),
               onTap: () {
                 if (isDarkMode) {
@@ -137,7 +141,10 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
               },
             ),
             ListTile(
-              title: Text('Dark', style: Theme.of(context).textTheme.titleSmall),
+              title: Text(
+                'Dark',
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
               leading: const Icon(Icons.dark_mode_rounded),
               onTap: () {
                 if (!isDarkMode) {

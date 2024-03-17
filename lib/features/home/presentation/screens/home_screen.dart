@@ -48,7 +48,7 @@ class HomeScreen extends ConsumerWidget {
             Expanded(
               child: dataAsync.when(
                 loading: () => const LoadingScreen(),
-                error: (error, stackTrace) => ErrorScreen(error: error.toString()),
+                error: (error, _) => ErrorScreen(error: error.toString()),
                 data: (cheatSheets) => ListView.builder(
                   itemCount: cheatSheets.length,
                   itemBuilder: (context, index) {
@@ -59,7 +59,10 @@ class HomeScreen extends ConsumerWidget {
                         title: cheatSheet.title,
                         leadingIcon: cheatSheet.icon,
                         backgroundColor: HexColor(cheatSheet.background),
-                        onTap: () => context.push(AppRoutes.sections.path, extra: cheatSheet),
+                        onTap: () => context.push(
+                          AppRoutes.sections.path,
+                          extra: cheatSheet,
+                        ),
                       ),
                     );
                   },

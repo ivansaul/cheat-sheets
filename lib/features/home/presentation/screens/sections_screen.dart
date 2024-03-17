@@ -74,10 +74,16 @@ class SectionsScreen extends ConsumerWidget {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: CustomListTile(
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                        vertical: 5,
+                      ),
                       leadingIcon: ConstantIcons.notes,
                       title: section.title,
-                      onTap: () => context.push(AppRoutes.details.path, extra: section),
+                      onTap: () => context.push(
+                        AppRoutes.details.path,
+                        extra: section,
+                      ),
                     ),
                   );
                 },

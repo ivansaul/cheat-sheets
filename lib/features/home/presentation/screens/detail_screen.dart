@@ -35,7 +35,8 @@ class DetailsScreen extends ConsumerWidget {
           PopupMenuButton<CodeStyleEnum>(
             tooltip: 'Code Styles',
             icon: const Icon(Icons.palette),
-            onSelected: (codeStyle) => ref.read(codeStyleProvider.notifier).toggle(codeStyle),
+            onSelected: (codeStyle) =>
+                ref.read(codeStyleProvider.notifier).toggle(codeStyle),
             itemBuilder: (BuildContext context) {
               return [
                 const PopupMenuItem<CodeStyleEnum>(
@@ -86,7 +87,8 @@ class DetailsScreen extends ConsumerWidget {
               const PConfig(),
               CodeConfig(
                 style: TextStyle(
-                  backgroundColor: isDarkMode ? HexColor('#383D46') : HexColor('#E8ECEF'),
+                  backgroundColor:
+                      isDarkMode ? HexColor('#383D46') : HexColor('#E8ECEF'),
                 ),
               ),
               PreConfig(

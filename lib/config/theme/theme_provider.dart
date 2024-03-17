@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:flutter_highlight/themes/darcula.dart';
-import 'package:flutter_highlight/themes/atom-one-light.dart';
 import 'package:flutter_highlight/themes/atom-one-dark.dart';
-import 'package:flutter_highlight/themes/vs.dart';
-import 'package:flutter_highlight/themes/xcode.dart';
+import 'package:flutter_highlight/themes/atom-one-light.dart';
+import 'package:flutter_highlight/themes/darcula.dart';
 import 'package:flutter_highlight/themes/idea.dart';
 import 'package:flutter_highlight/themes/nord.dart';
+import 'package:flutter_highlight/themes/vs.dart';
+import 'package:flutter_highlight/themes/xcode.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'theme_provider.g.dart';
 

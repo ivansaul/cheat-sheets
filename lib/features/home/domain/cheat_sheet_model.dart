@@ -22,7 +22,9 @@ class CheatSheetModel {
     required this.sections,
   });
 
-  factory CheatSheetModel.fromJson(Map<String, dynamic> json) => _$CheatSheetModelFromJson(json);
+  factory CheatSheetModel.fromJson(Map<String, dynamic> json) =>
+      _$CheatSheetModelFromJson(json);
+
   Map<String, dynamic> toJson() => _$CheatSheetModelToJson(this);
 }
 
@@ -35,6 +37,8 @@ class Section {
     required this.content,
   });
 
-  factory Section.fromJson(Map<String, dynamic> json) => _$SectionFromJson(json);
+  factory Section.fromJson(Map<String, dynamic> json) =>
+      _$SectionFromJson(json);
+
   Map<String, dynamic> toJson() => _$SectionToJson(this);
 }
