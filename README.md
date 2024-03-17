@@ -6,9 +6,7 @@
     <b><a href="#">Cheat Sheets</a></b>
 </h1>
 
-**`Cheat-Sheets`** is a collection of cheat sheets contributed<br/>
-by open source angels. It shares a quick reference<br/>
-cheat sheet for developers in a nice layout.
+**`Cheat-Sheets`** Your go-to reference developer guide for learning `Python`, `Rust`, `Swift`, `JavaScript`, `Kotlin`, `Go`, `Git`, and more!
 
 ![Made-with-flutter](https://img.shields.io/badge/Made%20with-Flutter-orange)
 [![Cheat Sheet | Docs](https://github.com/ivansaul/cheat-sheets-doc/actions/workflows/docs.yaml/badge.svg)](https://github.com/ivansaul/cheat-sheets-doc/actions/workflows/docs.yaml)
@@ -31,23 +29,9 @@ cheat sheet for developers in a nice layout.
 
 ![Banner][banner]
 
-## Early Access Testing on Google Play
-
-To access the latest features and updates before the official release, you can become a tester for our app on Google Play. Google has introduced a new policy for new accounts, requiring apps to undergo a closed testing phase before they are made publicly available.
-
-> [!NOTE]
-> If you would like to become a tester and install the app from Google Play, please follow these steps:
->
->    1. Send me a message on [Discord][discord] indicating your `Gmail` address.
->    2. I will add your Gmail address to the list of testers.
->    3. Once added, you will receive an invitation from Google Play to become a tester.
->    4. Accept the invitation and enjoy early access to new features and updates!
-
-**`Thank you for your support and participation in testing our app!`**
-
 ## Releases
 
-This application is available on the [Google Play][google-play] and [GitHub][github-releases].
+This application is available on the [**`Google Play`**][google-play] and [**`GitHub`**][github-releases].
 
 ## Screenshots
 
@@ -92,10 +76,9 @@ This project uses GPLv3. See [LICENSE] for details.
 [license]: ./LICENSE
 [reference]: https://github.com/Fechin/reference
 [discord]: https://discord.com/users/744755977684779038
-[discord-server]: https://discord.gg/tDvybtJ7y9
 [issue]: https://github.com/ivansaul/cheat-sheets/issues
 [flutter]: https://flutter.dev
 [banner]: https://i.imgur.com/XjpdMoW.png
 [github-releases]: https://github.com/ivansaul/cheat-sheets/releases
-[google-play]: https://play.google.com/apps/testing/com.ivansaul.cheatsheets
+[google-play]: https://play.google.com/store/apps/details?id=com.ivansaul.cheatsheets
 [app-icon]: https://i.imgur.com/m2fO1J9.png
