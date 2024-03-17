@@ -16,7 +16,7 @@
 <a href="https://github.com/ivansaul/cheat-sheets/releases/">
     <img alt="GitHub Badge" src="https://i.imgur.com/RozkoCi.png" height="50px">
 </a>
-<a href="https://play.google.com/apps/testing/com.ivansaul.cheatsheets">
+<a href="https://play.google.com/store/apps/details?id=com.ivansaul.cheatsheets">
     <img alt="Google Play Badge" src="https://i.imgur.com/Iv2gaww.png" height="50px">
 </a>
 <br/>
