@@ -1,7 +1,7 @@
 import 'dart:convert' show json;
 
-import 'package:cheat_sheets/features/home/data/home_repository.dart';
-import 'package:cheat_sheets/features/home/domain/cheat_sheet_model.dart';
+import 'package:cheat_sheets/src/features/home/data/home_repository.dart';
+import 'package:cheat_sheets/src/features/home/domain/cheat_sheet_model.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 class HomeRepositoryImpl implements HomeRepository {

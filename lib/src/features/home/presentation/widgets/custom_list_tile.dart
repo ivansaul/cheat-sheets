@@ -1,4 +1,4 @@
-import 'package:cheat_sheets/shared/widgets/cached_svg_picture.dart';
+import 'package:cheat_sheets/src/shared/widgets/cached_svg_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hexcolor/hexcolor.dart';

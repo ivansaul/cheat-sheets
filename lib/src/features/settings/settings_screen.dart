@@ -1,7 +1,7 @@
-import 'package:cheat_sheets/config/theme/theme_provider.dart';
-import 'package:cheat_sheets/shared/constants/constants.dart';
-import 'package:cheat_sheets/shared/providers/app_info_provider.dart';
-import 'package:cheat_sheets/shared/utils/open_link.dart';
+import 'package:cheat_sheets/src/constants/constants.dart';
+import 'package:cheat_sheets/src/shared/providers/app_info_provider.dart';
+import 'package:cheat_sheets/src/theme/theme_provider.dart';
+import 'package:cheat_sheets/src/utils/open_link.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

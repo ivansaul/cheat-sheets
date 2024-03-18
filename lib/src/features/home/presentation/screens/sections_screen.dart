@@ -1,8 +1,8 @@
-import 'package:cheat_sheets/config/router/app_routes.dart';
-import 'package:cheat_sheets/config/theme/theme_provider.dart';
-import 'package:cheat_sheets/features/home/domain/cheat_sheet_model.dart';
-import 'package:cheat_sheets/features/home/presentation/widgets/custom_list_tile.dart';
-import 'package:cheat_sheets/shared/constants/constants.dart';
+import 'package:cheat_sheets/src/constants/constants.dart';
+import 'package:cheat_sheets/src/features/home/domain/cheat_sheet_model.dart';
+import 'package:cheat_sheets/src/features/home/presentation/widgets/custom_list_tile.dart';
+import 'package:cheat_sheets/src/router/app_routes.dart';
+import 'package:cheat_sheets/src/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';

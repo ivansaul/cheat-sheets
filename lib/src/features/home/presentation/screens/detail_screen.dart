@@ -1,6 +1,6 @@
-import 'package:cheat_sheets/config/theme/theme_provider.dart';
-import 'package:cheat_sheets/features/home/domain/cheat_sheet_model.dart';
-import 'package:cheat_sheets/features/home/presentation/widgets/code_wrapper.dart';
+import 'package:cheat_sheets/src/features/home/domain/cheat_sheet_model.dart';
+import 'package:cheat_sheets/src/features/home/presentation/widgets/code_wrapper.dart';
+import 'package:cheat_sheets/src/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';

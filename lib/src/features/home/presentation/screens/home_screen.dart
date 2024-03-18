@@ -1,9 +1,9 @@
-import 'package:cheat_sheets/config/router/app_routes.dart';
-import 'package:cheat_sheets/config/theme/theme_provider.dart';
-import 'package:cheat_sheets/features/home/presentation/providers/cheat_sheets_provider.dart';
-import 'package:cheat_sheets/features/home/presentation/widgets/custom_list_tile.dart';
-import 'package:cheat_sheets/shared/screens/error_screen.dart';
-import 'package:cheat_sheets/shared/screens/loading_screen.dart';
+import 'package:cheat_sheets/src/features/home/presentation/providers/cheat_sheets_provider.dart';
+import 'package:cheat_sheets/src/features/home/presentation/widgets/custom_list_tile.dart';
+import 'package:cheat_sheets/src/router/app_routes.dart';
+import 'package:cheat_sheets/src/shared/screens/error_screen.dart';
+import 'package:cheat_sheets/src/shared/screens/loading_screen.dart';
+import 'package:cheat_sheets/src/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
