@@ -1,6 +1,6 @@
 import 'package:cheat_sheets/src/constants/constants.dart';
-import 'package:cheat_sheets/src/features/home/domain/cheat_sheet_model.dart';
-import 'package:cheat_sheets/src/features/home/presentation/widgets/custom_list_tile.dart';
+import 'package:cheat_sheets/src/features/cheat_sheets/domain/cheat_sheet.dart';
+import 'package:cheat_sheets/src/features/cheat_sheets/presentation/widgets/custom_list_tile.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 
 class SectionsScreen extends ConsumerWidget {
-  final CheatSheetModel cheatSheet;
+  final CheatSheet cheatSheet;
   const SectionsScreen({
     super.key,
     required this.cheatSheet,
@@ -78,7 +78,7 @@ class SectionsScreen extends ConsumerWidget {
                         horizontal: 15,
                         vertical: 5,
                       ),
-                      leadingIcon: ConstantIcons.notes,
+                      leadingIcon: Assets.notesIconSvg,
                       title: section.title,
                       onTap: () => context.push(
                         AppRoutes.details.path,

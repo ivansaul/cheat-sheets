@@ -1,7 +1,7 @@
-import 'package:cheat_sheets/src/features/home/domain/cheat_sheet_model.dart';
-import 'package:cheat_sheets/src/features/home/presentation/screens/detail_screen.dart';
-import 'package:cheat_sheets/src/features/home/presentation/screens/home_screen.dart';
-import 'package:cheat_sheets/src/features/home/presentation/screens/sections_screen.dart';
+import 'package:cheat_sheets/src/features/cheat_sheets/domain/cheat_sheet.dart';
+import 'package:cheat_sheets/src/features/cheat_sheets/presentation/screens/cheat_sheets_screen.dart';
+import 'package:cheat_sheets/src/features/cheat_sheets/presentation/screens/cheat_sheet_detail_screen.dart';
+import 'package:cheat_sheets/src/features/cheat_sheets/presentation/screens/cheat_sheet_sections_screen.dart';
 import 'package:cheat_sheets/src/features/settings/settings_screen.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:go_router/go_router.dart';
@@ -11,12 +11,12 @@ final appRouter = GoRouter(
   routes: [
     GoRoute(
       path: AppRoutes.home.path,
-      builder: (context, state) => const HomeScreen(),
+      builder: (context, state) => const CheatSheetsScreen(),
     ),
     GoRoute(
       path: AppRoutes.sections.path,
       builder: (context, state) {
-        final cheatSheet = state.extra as CheatSheetModel;
+        final cheatSheet = state.extra as CheatSheet;
         return SectionsScreen(
           cheatSheet: cheatSheet,
         );
@@ -25,7 +25,7 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.details.path,
       builder: (context, state) {
-        final section = state.extra as Section;
+        final section = state.extra as CheatSheetSection;
         return DetailsScreen(
           section: section,
         );

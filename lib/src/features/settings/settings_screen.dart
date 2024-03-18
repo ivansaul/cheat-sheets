@@ -64,20 +64,20 @@ class SettingsScreen extends ConsumerWidget {
             ListTile(
               title: const Text('Author'),
               subtitle: const Text('@ivansaul'),
-              onTap: () => openLink(ConstantLinks.authorGithubLink),
+              onTap: () => openLink(Links.authorGithub),
             ),
             ListTile(
               title: const Text('Special Thanks'),
               subtitle: const Text('@Fechin/reference'),
-              onTap: () => openLink(ConstantLinks.specialThanksLink),
+              onTap: () => openLink(Links.fechinReference),
             ),
             ListTile(
               title: const Text('Contribute'),
-              onTap: () => openLink(ConstantLinks.projectGithubLink),
+              onTap: () => openLink(Links.projectGithub),
             ),
             ListTile(
               title: const Text('Report an issue'),
-              onTap: () => openLink(ConstantLinks.reportIssueLink),
+              onTap: () => openLink(Links.reportIssue),
             ),
             const Spacer(),
             Align(
@@ -85,11 +85,11 @@ class SettingsScreen extends ConsumerWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   IconButton(
-                    onPressed: () => openLink(ConstantLinks.projectGithubLink),
+                    onPressed: () => openLink(Links.projectGithub),
                     icon: const Icon(FontAwesomeIcons.github),
                   ),
                   IconButton(
-                    onPressed: () => openLink(ConstantLinks.discordChatLink),
+                    onPressed: () => openLink(Links.discordChat),
                     icon: const Icon(FontAwesomeIcons.discord),
                   ),
                 ],

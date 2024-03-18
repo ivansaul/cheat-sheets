@@ -1,5 +1,5 @@
-import 'package:cheat_sheets/src/features/home/domain/cheat_sheet_model.dart';
-import 'package:cheat_sheets/src/features/home/presentation/widgets/code_wrapper.dart';
+import 'package:cheat_sheets/src/features/cheat_sheets/domain/cheat_sheet.dart';
+import 'package:cheat_sheets/src/features/cheat_sheets/presentation/widgets/code_wrapper.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -9,7 +9,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 
 class DetailsScreen extends ConsumerWidget {
-  final Section section;
+  final CheatSheetSection section;
   const DetailsScreen({
     super.key,
     required this.section,

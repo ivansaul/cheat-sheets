@@ -1,5 +1,5 @@
-import 'package:cheat_sheets/src/features/home/presentation/providers/cheat_sheets_provider.dart';
-import 'package:cheat_sheets/src/features/home/presentation/widgets/custom_list_tile.dart';
+import 'package:cheat_sheets/src/features/cheat_sheets/presentation/providers/cheat_sheets_provider.dart';
+import 'package:cheat_sheets/src/features/cheat_sheets/presentation/widgets/custom_list_tile.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:cheat_sheets/src/shared/screens/error_screen.dart';
 import 'package:cheat_sheets/src/shared/screens/loading_screen.dart';
@@ -10,8 +10,8 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class HomeScreen extends ConsumerWidget {
-  const HomeScreen({super.key});
+class CheatSheetsScreen extends ConsumerWidget {
+  const CheatSheetsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
