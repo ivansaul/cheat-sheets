@@ -1,4 +1,6 @@
 import 'package:cheat_sheets/src/constants/constants.dart';
+import 'package:cheat_sheets/src/extensions/context.dart';
+import 'package:cheat_sheets/src/extensions/text_style.dart';
 import 'package:cheat_sheets/src/shared/providers/app_info_provider.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
 import 'package:cheat_sheets/src/utils/open_link.dart';
@@ -27,7 +29,7 @@ class SettingsScreen extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 20.0, left: 15.0),
               child: Text(
                 'General',
-                style: Theme.of(context).textTheme.titleMedium,
+                style: context.textTheme.heading3Bold,
               ),
             ),
             ListTile(
@@ -36,11 +38,6 @@ class SettingsScreen extends ConsumerWidget {
               onTap: () => _showDialogTheme(context, ref),
             ),
             // TODO: Implement Code Style
-            // ListTile(
-            //   title: const Text('Code Style'),
-            //   subtitle: const Text('One Dark'),
-            //   onTap: () {},
-            // ),
             // TODO: Implement Language settings
             ListTile(
               title: const Text('Language'),
@@ -58,7 +55,7 @@ class SettingsScreen extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 20.0, left: 15.0),
               child: Text(
                 'More Options',
-                style: Theme.of(context).textTheme.titleMedium,
+                style: context.textTheme.heading3Bold,
               ),
             ),
             ListTile(
@@ -104,6 +101,8 @@ class SettingsScreen extends ConsumerWidget {
                   error: (_, __) => 'loading',
                   loading: () => 'loading',
                 ),
+                style: context.textTheme.body2Regular
+                    .tsColor(context.colors.grey200),
               ),
             ),
             const Gap(10),
@@ -120,9 +119,10 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
     context: context,
     builder: (context) {
       return AlertDialog(
+        backgroundColor: context.colors.brandWhite,
         title: Text(
           'Theme',
-          style: Theme.of(context).textTheme.titleMedium,
+          style: context.textTheme.heading3Bold,
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -130,7 +130,7 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
             ListTile(
               title: Text(
                 'Light',
-                style: Theme.of(context).textTheme.titleSmall,
+                style: context.textTheme.body2Regular,
               ),
               leading: const Icon(Icons.light_mode_rounded),
               onTap: () {
@@ -143,7 +143,7 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
             ListTile(
               title: Text(
                 'Dark',
-                style: Theme.of(context).textTheme.titleSmall,
+                style: context.textTheme.body2Regular,
               ),
               leading: const Icon(Icons.dark_mode_rounded),
               onTap: () {
@@ -160,7 +160,11 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
             onPressed: () {
               context.pop();
             },
-            child: const Text('CANCEL'),
+            child: Text(
+              'CANCEL',
+              style: context.textTheme.body2Regular
+                  .tsColor(context.colors.brandBlue),
+            ),
           )
         ],
       );

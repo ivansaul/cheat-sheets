@@ -1,6 +1,5 @@
 import 'package:cheat_sheets/src/router/app_router.dart';
-import 'package:cheat_sheets/src/theme/dark_theme.dart';
-import 'package:cheat_sheets/src/theme/light_theme.dart';
+import 'package:cheat_sheets/src/theme/app_theme.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,7 +14,7 @@ class MyApp extends ConsumerWidget {
       routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
       title: 'Cheat Sheets',
-      theme: isDark ? darkTheme : lightTheme,
+      theme: AppTheme(!isDark).theme,
     );
   }
 }
