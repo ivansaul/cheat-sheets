@@ -22,8 +22,7 @@ class SettingsScreen extends ConsumerWidget {
         title: const Text('Settings'),
       ),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 20.0, left: 15.0),
@@ -76,7 +75,7 @@ class SettingsScreen extends ConsumerWidget {
               title: const Text('Report an issue'),
               onTap: () => openLink(Links.reportIssue),
             ),
-            const Spacer(),
+            const Gap(40),
             Align(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
