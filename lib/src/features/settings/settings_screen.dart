@@ -28,7 +28,7 @@ class SettingsScreen extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 20.0, left: 15.0),
               child: Text(
                 'General',
-                style: context.textTheme.heading3Bold,
+                style: context.textTheme.titleMedium?.tsBold(),
               ),
             ),
             ListTile(
@@ -43,18 +43,16 @@ class SettingsScreen extends ConsumerWidget {
               subtitle: const Text('English'),
               onTap: () {},
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Divider(
-                color: Colors.grey.withOpacity(0.3),
-                thickness: 1.5,
-              ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Divider(),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20.0, left: 15.0),
               child: Text(
                 'More Options',
-                style: context.textTheme.heading3Bold,
+                style: context.textTheme.titleMedium
+                    ?.copyWith(fontWeight: FontWeight.w900),
               ),
             ),
             ListTile(
@@ -100,8 +98,7 @@ class SettingsScreen extends ConsumerWidget {
                   error: (_, __) => 'loading',
                   loading: () => 'loading',
                 ),
-                style: context.textTheme.body2Regular
-                    .tsColor(context.colors.grey200),
+                style: context.textTheme.labelMedium,
               ),
             ),
             const Gap(10),
@@ -118,19 +115,15 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        backgroundColor: context.colors.brandWhite,
         title: Text(
           'Theme',
-          style: context.textTheme.heading3Bold,
+          style: context.textTheme.titleMedium?.tsBold(),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              title: Text(
-                'Light',
-                style: context.textTheme.body2Regular,
-              ),
+              title: const Text('Light'),
               leading: const Icon(Icons.light_mode_rounded),
               onTap: () {
                 if (isDarkMode) {
@@ -140,10 +133,7 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
               },
             ),
             ListTile(
-              title: Text(
-                'Dark',
-                style: context.textTheme.body2Regular,
-              ),
+              title: const Text('Dark'),
               leading: const Icon(Icons.dark_mode_rounded),
               onTap: () {
                 if (!isDarkMode) {
@@ -159,11 +149,7 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
             onPressed: () {
               context.pop();
             },
-            child: Text(
-              'CANCEL',
-              style: context.textTheme.body2Regular
-                  .tsColor(context.colors.brandBlue),
-            ),
+            child: const Text('CANCEL'),
           )
         ],
       );

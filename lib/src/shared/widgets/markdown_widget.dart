@@ -22,7 +22,6 @@ class CustomMarkdownWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderColor = context.colors.grey100.withOpacity(0.5);
     return MarkdownWidget(
       padding: padding,
       data: data,
@@ -30,21 +29,30 @@ class CustomMarkdownWidget extends StatelessWidget {
       selectable: false,
       config: MarkdownConfig(
         configs: [
-          H1Config(
-            style: context.textTheme.heading1Bold,
+          const H1Config(
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          H2Config(
-            style: context.textTheme.heading2Bold,
+          const H2Config(
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          H3Config(
-            style: context.textTheme.heading3Bold,
+          const H3Config(
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          PConfig(
-            textStyle: context.textTheme.body1Regular,
+          const PConfig(
+            textStyle: TextStyle(fontSize: 16),
           ),
           CodeConfig(
             style: TextStyle(
-              backgroundColor: context.colors.grey100,
+              backgroundColor: Colors.grey.withValues(alpha: 0.2),
             ),
           ),
           ListConfig(
@@ -54,7 +62,7 @@ class CustomMarkdownWidget extends StatelessWidget {
               height: 6,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: context.colors.brandBlack,
+                color: context.colorScheme.onSurface,
               ),
             ),
           ),
@@ -67,19 +75,11 @@ class CustomMarkdownWidget extends StatelessWidget {
               child: child,
             ),
             decoration: BoxDecoration(
-              color: context.colors.grey50,
+              color: context.appColor.backgroundSecondary,
               borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-              border: Border.all(color: borderColor),
-              boxShadow: [
-                BoxShadow(
-                  color: borderColor,
-                  spreadRadius: 3,
-                  blurRadius: 5,
-                ),
-              ],
             ),
             styleNotMatched: GoogleFonts.jetBrainsMono(
-              color: context.colors.brandBlack,
+              color: context.colorScheme.onSurface,
             ),
           ),
         ],

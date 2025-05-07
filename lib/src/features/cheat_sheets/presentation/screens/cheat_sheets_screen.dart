@@ -1,4 +1,3 @@
-import 'package:cheat_sheets/src/extensions/context.dart';
 import 'package:cheat_sheets/src/features/cheat_sheets/presentation/providers/cheat_sheets_provider.dart';
 import 'package:cheat_sheets/src/features/cheat_sheets/presentation/widgets/custom_list_tile.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
@@ -41,9 +40,8 @@ class CheatSheetsScreen extends ConsumerWidget {
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
           children: [
-            Text(
+            const Text(
               'Here are some cheat sheets and quick references contributed by open source angels.',
-              style: context.textTheme.body2Medium,
             ),
             const Gap(20),
             Expanded(

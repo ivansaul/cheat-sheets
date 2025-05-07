@@ -77,12 +77,12 @@ class _AppBarView extends ConsumerWidget implements PreferredSizeWidget {
           children: [
             TextSpan(
               text: '$title ',
-              style: context.textTheme.heading2Bold,
+              style: context.textTheme.titleLarge?.tsBold(),
             ),
             TextSpan(
               text: 'cheatsheet',
-              style: context.textTheme.heading2SemiBold
-                  .tsColor(context.colors.grey150),
+              style:
+                  context.textTheme.titleLarge?.tsBold().tsColor(Colors.grey),
             ),
           ],
         ),
