@@ -1,3 +1,5 @@
+import 'package:cheat_sheets/src/shared/services/storage/key_value_storage_service.dart';
+import 'package:cheat_sheets/src/shared/services/storage/key_value_storage_service_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_highlight/themes/atom-one-dark.dart';
 import 'package:flutter_highlight/themes/atom-one-light.dart';
@@ -11,14 +13,31 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'theme_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-class IsDarkMode extends _$IsDarkMode {
+class ThemeModeController extends _$ThemeModeController {
+  final String _appThemeKey = 'app_theme';
+
   @override
-  bool build() {
-    return false;
+  Future<ThemeMode> build() async {
+    return _loadTheme();
   }
 
-  void toggle() {
-    state = !state;
+  Future<void> setTheme(ThemeMode theme) async {
+    state = AsyncValue.data(theme);
+    await _storage.set<String>(_appThemeKey, theme.name);
+  }
+
+  Future<ThemeMode> _loadTheme() async {
+    final stored = await _storage.get<String>(_appThemeKey);
+    return switch (stored) {
+      'light' => ThemeMode.light,
+      'dark' => ThemeMode.dark,
+      'system' => ThemeMode.system,
+      _ => ThemeMode.light,
+    };
+  }
+
+  KeyValueStorageService get _storage {
+    return ref.read(keyValueStorageServiceProvider);
   }
 }
 

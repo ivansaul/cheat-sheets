@@ -4,10 +4,9 @@ import 'package:cheat_sheets/src/extensions/text_style.dart';
 import 'package:cheat_sheets/src/features/cheat_sheets/domain/cheat_sheet.dart';
 import 'package:cheat_sheets/src/features/cheat_sheets/presentation/widgets/custom_list_tile.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
+import 'package:cheat_sheets/src/shared/widgets/app_theme_toggle_button.dart';
 import 'package:cheat_sheets/src/shared/widgets/markdown_widget.dart';
-import 'package:cheat_sheets/src/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
@@ -62,15 +61,14 @@ class CheatSheetSectionsScreen extends StatelessWidget {
   }
 }
 
-class _AppBarView extends ConsumerWidget implements PreferredSizeWidget {
+class _AppBarView extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   const _AppBarView({
     required this.title,
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final isDarkMode = ref.watch(isDarkModeProvider);
+  Widget build(BuildContext context) {
     return AppBar(
       title: RichText(
         text: TextSpan(
@@ -88,14 +86,7 @@ class _AppBarView extends ConsumerWidget implements PreferredSizeWidget {
         ),
       ),
       actions: [
-        IconButton(
-          onPressed: () {
-            ref.read(isDarkModeProvider.notifier).toggle();
-          },
-          icon: Icon(
-            isDarkMode ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
-          ),
-        ),
+        AppThemeToggleButton(),
         const Gap(10),
       ],
     );

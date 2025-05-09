@@ -7,6 +7,13 @@ extension StringExtensions on String {
           radix: 16,
         ),
       );
+
+  /// Capitalize the first letter in a string.
+  /// ```dart
+  /// 'hello world'.capitalize() // 'Hello world'
+  /// ```
+  String capitalize() =>
+      length > 1 ? this[0].toUpperCase() + substring(1) : toUpperCase();
 }
 
 extension RemoveAll on String {

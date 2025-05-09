@@ -3,7 +3,7 @@ import 'package:cheat_sheets/src/features/cheat_sheets/presentation/widgets/cust
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:cheat_sheets/src/shared/screens/error_screen.dart';
 import 'package:cheat_sheets/src/shared/screens/loading_screen.dart';
-import 'package:cheat_sheets/src/theme/theme_provider.dart';
+import 'package:cheat_sheets/src/shared/widgets/app_theme_toggle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -16,7 +16,6 @@ class CheatSheetsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final dataAsync = ref.watch(cheatSheetsProvider);
-    final isDarkMode = ref.watch(isDarkModeProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Quick Reference'),
@@ -27,12 +26,7 @@ class CheatSheetsScreen extends ConsumerWidget {
           ),
         ),
         actions: [
-          IconButton(
-            onPressed: ref.read(isDarkModeProvider.notifier).toggle,
-            icon: Icon(
-              isDarkMode ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
-            ),
-          ),
+          AppThemeToggleButton(),
           const Gap(10),
         ],
       ),

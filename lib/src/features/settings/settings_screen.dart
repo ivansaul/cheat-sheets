@@ -1,5 +1,6 @@
 import 'package:cheat_sheets/src/constants/constants.dart';
 import 'package:cheat_sheets/src/extensions/context.dart';
+import 'package:cheat_sheets/src/extensions/string.dart';
 import 'package:cheat_sheets/src/extensions/text_style.dart';
 import 'package:cheat_sheets/src/shared/providers/app_info_provider.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
@@ -15,7 +16,7 @@ class SettingsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDarkMode = ref.watch(isDarkModeProvider);
+    final themeMode = ref.watch(themeModeControllerProvider).valueOrNull;
     final appInfoAsync = ref.watch(appInfoProvider);
     return Scaffold(
       appBar: AppBar(
@@ -33,7 +34,7 @@ class SettingsScreen extends ConsumerWidget {
             ),
             ListTile(
               title: const Text('Theme'),
-              subtitle: Text(isDarkMode ? 'Dark' : 'Light'),
+              subtitle: themeMode != null ? Text(themeMode.name.capitalize()) : null,
               onTap: () => _showDialogTheme(context, ref),
             ),
             // TODO: Implement Code Style
@@ -110,7 +111,7 @@ class SettingsScreen extends ConsumerWidget {
 }
 
 _showDialogTheme(BuildContext context, WidgetRef ref) {
-  final isDarkMode = ref.watch(isDarkModeProvider);
+  final themeModeNotifier = ref.read(themeModeControllerProvider.notifier);
   return showDialog(
     context: context,
     builder: (context) {
@@ -126,9 +127,7 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
               title: const Text('Light'),
               leading: const Icon(Icons.light_mode_rounded),
               onTap: () {
-                if (isDarkMode) {
-                  ref.read(isDarkModeProvider.notifier).toggle();
-                }
+                themeModeNotifier.setTheme(ThemeMode.light);
                 context.pop();
               },
             ),
@@ -136,9 +135,7 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
               title: const Text('Dark'),
               leading: const Icon(Icons.dark_mode_rounded),
               onTap: () {
-                if (!isDarkMode) {
-                  ref.read(isDarkModeProvider.notifier).toggle();
-                }
+                themeModeNotifier.setTheme(ThemeMode.dark);
                 context.pop();
               },
             ),
