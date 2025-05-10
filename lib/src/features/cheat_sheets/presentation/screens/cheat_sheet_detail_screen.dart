@@ -1,4 +1,5 @@
 import 'package:cheat_sheets/src/features/cheat_sheets/domain/cheat_sheet.dart';
+import 'package:cheat_sheets/src/shared/widgets/app_theme_toggle_button.dart';
 import 'package:cheat_sheets/src/shared/widgets/markdown_widget.dart';
 import 'package:cheat_sheets/src/shared/widgets/popup_code_style_menu.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
@@ -36,16 +37,10 @@ class _AppBarView extends ConsumerWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDarkMode = ref.watch(isDarkModeProvider);
     return AppBar(
       title: Text(title),
       actions: [
-        IconButton(
-          onPressed: ref.read(isDarkModeProvider.notifier).toggle,
-          icon: Icon(
-            isDarkMode ? Icons.light_mode_rounded : Icons.dark_mode_rounded,
-          ),
-        ),
+        AppThemeToggleButton(),
         PopupCodeStyleMenu(
           onSelected: ref.read(codeStyleProvider.notifier).toggle,
         ),

@@ -1,5 +1,6 @@
 import 'package:cheat_sheets/src/constants/constants.dart';
 import 'package:cheat_sheets/src/extensions/context.dart';
+import 'package:cheat_sheets/src/extensions/string.dart';
 import 'package:cheat_sheets/src/extensions/text_style.dart';
 import 'package:cheat_sheets/src/shared/providers/app_info_provider.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
@@ -15,7 +16,7 @@ class SettingsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDarkMode = ref.watch(isDarkModeProvider);
+    final themeMode = ref.watch(themeModeControllerProvider).valueOrNull;
     final appInfoAsync = ref.watch(appInfoProvider);
     return Scaffold(
       appBar: AppBar(
@@ -28,12 +29,12 @@ class SettingsScreen extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 20.0, left: 15.0),
               child: Text(
                 'General',
-                style: context.textTheme.heading3Bold,
+                style: context.textTheme.titleMedium?.tsBold(),
               ),
             ),
             ListTile(
               title: const Text('Theme'),
-              subtitle: Text(isDarkMode ? 'Dark' : 'Light'),
+              subtitle: themeMode != null ? Text(themeMode.name.capitalize()) : null,
               onTap: () => _showDialogTheme(context, ref),
             ),
             // TODO: Implement Code Style
@@ -43,18 +44,16 @@ class SettingsScreen extends ConsumerWidget {
               subtitle: const Text('English'),
               onTap: () {},
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Divider(
-                color: Colors.grey.withOpacity(0.3),
-                thickness: 1.5,
-              ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.0),
+              child: Divider(),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20.0, left: 15.0),
               child: Text(
                 'More Options',
-                style: context.textTheme.heading3Bold,
+                style: context.textTheme.titleMedium
+                    ?.copyWith(fontWeight: FontWeight.w900),
               ),
             ),
             ListTile(
@@ -100,8 +99,7 @@ class SettingsScreen extends ConsumerWidget {
                   error: (_, __) => 'loading',
                   loading: () => 'loading',
                 ),
-                style: context.textTheme.body2Regular
-                    .tsColor(context.colors.grey200),
+                style: context.textTheme.labelMedium,
               ),
             ),
             const Gap(10),
@@ -113,42 +111,31 @@ class SettingsScreen extends ConsumerWidget {
 }
 
 _showDialogTheme(BuildContext context, WidgetRef ref) {
-  final isDarkMode = ref.watch(isDarkModeProvider);
+  final themeModeNotifier = ref.read(themeModeControllerProvider.notifier);
   return showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
-        backgroundColor: context.colors.brandWhite,
         title: Text(
           'Theme',
-          style: context.textTheme.heading3Bold,
+          style: context.textTheme.titleMedium?.tsBold(),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              title: Text(
-                'Light',
-                style: context.textTheme.body2Regular,
-              ),
+              title: const Text('Light'),
               leading: const Icon(Icons.light_mode_rounded),
               onTap: () {
-                if (isDarkMode) {
-                  ref.read(isDarkModeProvider.notifier).toggle();
-                }
+                themeModeNotifier.setTheme(ThemeMode.light);
                 context.pop();
               },
             ),
             ListTile(
-              title: Text(
-                'Dark',
-                style: context.textTheme.body2Regular,
-              ),
+              title: const Text('Dark'),
               leading: const Icon(Icons.dark_mode_rounded),
               onTap: () {
-                if (!isDarkMode) {
-                  ref.read(isDarkModeProvider.notifier).toggle();
-                }
+                themeModeNotifier.setTheme(ThemeMode.dark);
                 context.pop();
               },
             ),
@@ -159,11 +146,7 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
             onPressed: () {
               context.pop();
             },
-            child: Text(
-              'CANCEL',
-              style: context.textTheme.body2Regular
-                  .tsColor(context.colors.brandBlue),
-            ),
+            child: const Text('CANCEL'),
           )
         ],
       );

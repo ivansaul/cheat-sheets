@@ -1,14 +1,13 @@
 import 'package:cheat_sheets/src/theme/app_colors_extension.dart';
-import 'package:cheat_sheets/src/theme/app_text_theme_extension.dart';
 import 'package:flutter/material.dart';
 
 extension ContextExtensions on BuildContext {
   double get height => MediaQuery.of(this).size.height;
   double get width => MediaQuery.of(this).size.width;
 
-  AppColorsExtension get colors =>
-      Theme.of(this).extension<AppColorsExtension>()!;
+  ColorsExtension get appColor => Theme.of(this).extension<ColorsExtension>()!;
 
-  AppTextThemeExtension get textTheme =>
-      Theme.of(this).extension<AppTextThemeExtension>()!;
+  TextTheme get textTheme => Theme.of(this).textTheme;
+
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
 }
