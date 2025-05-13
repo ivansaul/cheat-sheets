@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -23,7 +23,7 @@ class CachedNetworkSvgPicture extends StatelessWidget {
   final bool forceRefresh;
 
   const CachedNetworkSvgPicture({
-    Key? key,
+    super.key,
     required this.url,
     this.width,
     this.height,
@@ -40,7 +40,7 @@ class CachedNetworkSvgPicture extends StatelessWidget {
     this.theme,
     this.colorBlendMode = BlendMode.srcIn,
     this.forceRefresh = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class CachedNetworkSvgPicture extends StatelessWidget {
           width: width,
           height: height,
           child: const Center(
-            child: CircularProgressIndicator(),
+            child: CupertinoActivityIndicator(),
           ),
         );
       },
@@ -78,26 +78,25 @@ class CachedNetworkSvgPicture extends StatelessWidget {
   }
 
   Future<File> getImageData() async {
-    if (forceRefresh) {
-      final downloadedFile =
-          await DefaultCacheManager().downloadFile(url, force: true);
-      return downloadedFile.file;
+    final instance = CustomCacheManager.instance;
+    final cachedInfo = await instance.getFileFromCache(url);
+
+    if (forceRefresh || cachedInfo == null) {
+      final fileInfo = await instance.downloadFile(url, force: true);
+      return fileInfo.file;
     }
-    final file = await DefaultCacheManager().getSingleFile(url);
-    return file;
+    return cachedInfo.file;
   }
 }
 
-class CachedNetworkSvgImageManageUtils {
-  static void removeFileCache(String url) {
-    DefaultCacheManager().removeFile(url).then((value) {
-      debugPrint('File removed');
-    }).onError((error, stackTrace) {
-      debugPrint(error.toString());
-    });
-  }
+class CustomCacheManager {
+  static final CacheManager instance = CacheManager(
+    Config(
+      "cheatsheetCacheDataKey",
+      stalePeriod: const Duration(days: 30),
+      maxNrOfCacheObjects: 200,
+    ),
+  );
 
-  void clearCacheAll() {
-    DefaultCacheManager().emptyCache();
-  }
+  CustomCacheManager._();
 }
