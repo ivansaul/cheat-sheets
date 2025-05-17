@@ -75,6 +75,8 @@ class _ItemRowWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Container(
+        width: 40,
+        height: 40,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: meta.background != null
@@ -84,8 +86,6 @@ class _ItemRowWidget extends StatelessWidget {
         ),
         child: CachedNetworkSvgPicture(
           url: meta.icon,
-          width: 20,
-          height: 20,
           colorFilter: const ColorFilter.mode(
             Colors.white,
             BlendMode.srcIn,
