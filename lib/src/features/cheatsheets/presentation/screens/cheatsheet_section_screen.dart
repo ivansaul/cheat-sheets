@@ -1,4 +1,4 @@
-import 'package:cheat_sheets/src/features/cheat_sheets/domain/cheat_sheet.dart';
+import 'package:cheat_sheets/src/features/cheatsheets/domain/cheatsheet.dart';
 import 'package:cheat_sheets/src/shared/widgets/app_theme_toggle_button.dart';
 import 'package:cheat_sheets/src/shared/widgets/markdown_widget.dart';
 import 'package:cheat_sheets/src/shared/widgets/popup_code_style_menu.dart';
@@ -7,12 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-class CheatSheetDetailsScreen extends ConsumerWidget {
-  final CheatSheetSection section;
-  const CheatSheetDetailsScreen({
+class CheatsheetSectionScreen extends ConsumerWidget {
+  const CheatsheetSectionScreen({
     super.key,
     required this.section,
   });
+
+  final SectionSheet section;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -36,11 +37,14 @@ class _AppBarView extends ConsumerWidget implements PreferredSizeWidget {
   });
 
   @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
+  @override
   Widget build(BuildContext context, WidgetRef ref) {
     return AppBar(
       title: Text(title),
       actions: [
-        AppThemeToggleButton(),
+        const AppThemeToggleButton(),
         PopupCodeStyleMenu(
           onSelected: ref.read(codeStyleProvider.notifier).toggle,
         ),
@@ -48,7 +52,4 @@ class _AppBarView extends ConsumerWidget implements PreferredSizeWidget {
       ],
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
