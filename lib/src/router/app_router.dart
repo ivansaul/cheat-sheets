@@ -1,32 +1,33 @@
-import 'package:cheat_sheets/src/features/cheat_sheets/domain/cheat_sheet.dart';
-import 'package:cheat_sheets/src/features/cheat_sheets/presentation/screens/cheat_sheet_detail_screen.dart';
-import 'package:cheat_sheets/src/features/cheat_sheets/presentation/screens/cheat_sheet_sections_screen.dart';
-import 'package:cheat_sheets/src/features/cheat_sheets/presentation/screens/cheat_sheets_screen.dart';
+import 'package:cheat_sheets/src/features/cheatsheets/domain/cheatsheet.dart';
+import 'package:cheat_sheets/src/features/cheatsheets/presentation/screens/cheatsheet_screen.dart';
+import 'package:cheat_sheets/src/features/cheatsheets/presentation/screens/cheatsheet_section_screen.dart';
+import 'package:cheat_sheets/src/features/cheatsheets/presentation/screens/cheatsheets_screen.dart';
+import 'package:cheat_sheets/src/features/cheatsheets/presentation/screens/cheatsheets_search_screen.dart';
 import 'package:cheat_sheets/src/features/settings/settings_screen.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
-  initialLocation: AppRoutes.home.path,
+  initialLocation: AppRoutes.cheatsheets.path,
   routes: [
     GoRoute(
-      path: AppRoutes.home.path,
-      builder: (context, state) => const CheatSheetsScreen(),
+      path: AppRoutes.cheatsheets.path,
+      builder: (context, state) => const CheatsheetsScreen(),
     ),
     GoRoute(
-      path: AppRoutes.sections.path,
+      path: AppRoutes.cheatsheet.path,
       builder: (context, state) {
-        final cheatSheet = state.extra as CheatSheet;
-        return CheatSheetSectionsScreen(
-          cheatSheet: cheatSheet,
+        final sheetId = state.extra as String;
+        return CheatsheetScreen(
+          sheetId: sheetId,
         );
       },
     ),
     GoRoute(
-      path: AppRoutes.details.path,
+      path: AppRoutes.cheatsheetSection.path,
       builder: (context, state) {
-        final section = state.extra as CheatSheetSection;
-        return CheatSheetDetailsScreen(
+        final section = state.extra as SectionSheet;
+        return CheatsheetSectionScreen(
           section: section,
         );
       },
@@ -34,6 +35,10 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.settings.path,
       builder: (context, state) => const SettingsScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.cheatsheetsSearch.path,
+      builder: (context, state) => const CheatsheetsSearchScreen(),
     ),
   ],
 );
