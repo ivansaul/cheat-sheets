@@ -18,7 +18,7 @@ class AppThemeToggleButton extends ConsumerWidget {
           onPressed: () => themeNotifier.setTheme(ThemeMode.light),
           icon: const Icon(Icons.light_mode_rounded),
         ),
-      _ => SizedBox(),
+      _ => const SizedBox(),
     };
   }
 }
