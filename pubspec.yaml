@@ -29,21 +29,29 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.8
+  dio: ^5.8.0+1
+  envied: ^1.1.1
   flex_color_scheme: ^8.1.1
   flutter:
     sdk: flutter
+  flutter_animate: ^4.5.2
   flutter_cache_manager: ^3.4.1
   flutter_highlight: ^0.7.0
+  flutter_hooks: ^0.21.2
   flutter_riverpod: ^2.6.1
   flutter_svg: ^2.1.0
   font_awesome_flutter: ^10.8.0
+  fpdart: ^1.1.1
+  freezed_annotation: ^3.0.0
   gap: ^3.0.1
   go_router: ^15.1.1
   google_fonts: ^6.2.1
   hexcolor: ^3.0.1
+  hooks_riverpod: ^2.6.1
   json_annotation: ^4.9.0
   markdown_widget: ^2.3.2+8
   package_info_plus: ^8.3.0
+  path_provider: ^2.1.5
   riverpod_annotation: ^2.6.1
   shared_preferences: ^2.5.3
   url_launcher: ^6.3.1
@@ -55,6 +63,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
+  freezed: ^3.0.6
   json_serializable: ^6.9.5
   riverpod_generator: ^2.6.5
   riverpod_lint: ^2.6.5
