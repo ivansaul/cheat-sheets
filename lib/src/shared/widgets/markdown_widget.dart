@@ -93,10 +93,9 @@ class _CodeWrapperWidget extends StatefulWidget {
   final String text;
 
   const _CodeWrapperWidget({
-    Key? key,
     required this.child,
     required this.text,
-  }) : super(key: key);
+  });
 
   @override
   State<_CodeWrapperWidget> createState() => _PreWrapperState();

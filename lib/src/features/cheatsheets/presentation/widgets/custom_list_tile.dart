@@ -5,13 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CustomListTile extends StatelessWidget {
-  final String title;
-  final String leadingIcon;
-  final void Function()? onTap;
-  final Color? backgroundColor;
-  final double leadingIconSize;
-  final EdgeInsetsGeometry? contentPadding;
-
   const CustomListTile({
     super.key,
     required this.title,
@@ -21,6 +14,13 @@ class CustomListTile extends StatelessWidget {
     this.leadingIconSize = 30,
     this.contentPadding,
   });
+
+  final String title;
+  final String leadingIcon;
+  final void Function()? onTap;
+  final Color? backgroundColor;
+  final double leadingIconSize;
+  final EdgeInsetsGeometry? contentPadding;
 
   @override
   Widget build(BuildContext context) {

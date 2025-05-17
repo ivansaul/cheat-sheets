@@ -1,7 +1,9 @@
 enum AppRoutes {
-  home('/'),
-  sections('/sections'),
-  details('/details'),
+  cheatsheets('/'),
+  cheatsheet('/cheatsheet'),
+  cheatsheetSection('/cheatsheet-detail'),
+  cheatsheetsSearch('/cheatsheet-search'),
+
   settings('/settings');
 
   final String path;
