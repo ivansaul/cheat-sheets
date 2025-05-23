@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'cheatsheet_providers.g.dart';
 
 @Riverpod(keepAlive: true)
-class CheatsheetsController extends _$CheatsheetsController {
+class CheatsheetListController extends _$CheatsheetListController {
   @override
   Future<List<CheatsheetMeta>> build() async {
     return _init();
@@ -23,7 +23,7 @@ class CheatsheetsController extends _$CheatsheetsController {
   }
 }
 
-@Riverpod(keepAlive: true)
+@Riverpod()
 class CheatsheetController extends _$CheatsheetController {
   @override
   Future<Cheatsheet> build(String byId) async {

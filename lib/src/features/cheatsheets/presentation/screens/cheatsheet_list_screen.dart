@@ -7,20 +7,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class CheatsheetsScreen extends ConsumerWidget {
-  const CheatsheetsScreen({super.key});
+class CheatsheetListScreen extends ConsumerWidget {
+  const CheatsheetListScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cheatsheetsAsync = ref.watch(cheatsheetsControllerProvider);
+    final cheatsheetsAsync = ref.watch(cheatsheetListControllerProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Quick Reference'),
         leading: IconButton(
-          onPressed: () => context.push(AppRoutes.settings.path),
+          onPressed: () => const SettingsRoute().go(context),
           icon: const Icon(
             Icons.settings_rounded,
           ),
@@ -28,7 +27,7 @@ class CheatsheetsScreen extends ConsumerWidget {
         actions: [
           const AppThemeToggleButton(),
           IconButton(
-            onPressed: () => context.push(AppRoutes.cheatsheetsSearch.path),
+            onPressed: () => const CheatsheetSearchRoute().go(context),
             icon: const Icon(
               FontAwesomeIcons.magnifyingGlass,
               size: 16,
@@ -59,10 +58,8 @@ class CheatsheetsScreen extends ConsumerWidget {
                       backgroundColor: meta.background != null
                           ? HexColor(meta.background!)
                           : Colors.blue,
-                      onTap: () => context.push(
-                        AppRoutes.cheatsheet.path,
-                        extra: meta.id,
-                      ),
+                      onTap: () =>
+                          CheatsheetRoute(sheetId: meta.id).go(context),
                     );
                   },
                 ),

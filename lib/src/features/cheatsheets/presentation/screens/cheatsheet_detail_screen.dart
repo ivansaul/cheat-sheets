@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-class CheatsheetSectionScreen extends ConsumerWidget {
-  const CheatsheetSectionScreen({
+class CheatsheetDetailScreen extends ConsumerWidget {
+  const CheatsheetDetailScreen({
     super.key,
     required this.section,
   });

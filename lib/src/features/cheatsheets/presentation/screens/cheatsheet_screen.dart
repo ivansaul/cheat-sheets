@@ -11,7 +11,6 @@ import 'package:cheat_sheets/src/shared/widgets/markdown_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 
 class CheatsheetScreen extends ConsumerWidget {
   const CheatsheetScreen({
@@ -54,10 +53,8 @@ class CheatsheetScreen extends ConsumerWidget {
                         ),
                         leadingIcon: Assets.notesIconSvg,
                         title: section.title,
-                        onTap: () => context.push(
-                          AppRoutes.cheatsheetSection.path,
-                          extra: section,
-                        ),
+                        onTap: () =>
+                            CheatsheetDetailRoute(section).push(context),
                       ),
                     );
                   },
