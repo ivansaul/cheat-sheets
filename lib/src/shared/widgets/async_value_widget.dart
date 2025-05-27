@@ -17,7 +17,31 @@ class AsyncValueWidget<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     return asyncValue.when(
       loading: () => const LoadingView(),
-      error: (error, _) => ErrorView(message: error.toString()),
+      error: (e, st) => ErrorView(error: e, stackTrace: st),
+      data: data,
+    );
+  }
+}
+
+class AsyncValueSliverWidget<T> extends StatelessWidget {
+  const AsyncValueSliverWidget({
+    super.key,
+    required this.asyncValue,
+    required this.data,
+  });
+
+  final AsyncValue<T> asyncValue;
+  final Widget Function(T value) data;
+
+  @override
+  Widget build(BuildContext context) {
+    return asyncValue.when(
+      loading: () => const SliverToBoxAdapter(
+        child: LoadingView(),
+      ),
+      error: (e, st) => SliverToBoxAdapter(
+        child: ErrorView(error: e, stackTrace: st),
+      ),
       data: data,
     );
   }
