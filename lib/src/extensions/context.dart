@@ -10,4 +10,6 @@ extension ContextExtensions on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
 
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
+
+  Brightness get brightness => Theme.of(this).brightness;
 }
