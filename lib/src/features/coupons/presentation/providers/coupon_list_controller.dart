@@ -16,6 +16,7 @@ class CouponListController extends _$CouponListController {
 
   @override
   Future<List<Coupon>> build() async {
+    ref.onDispose(() => _currentPage = 1);
     return _init();
   }
 
@@ -29,6 +30,11 @@ class CouponListController extends _$CouponListController {
         (r) => AsyncData([...previousState, ...r]),
       );
     });
+  }
+
+  Future<void> onRefresh() async {
+    ref.invalidateSelf();
+    await future;
   }
 
   Future<List<Coupon>> _init() async {
