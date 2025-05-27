@@ -1,6 +1,7 @@
 # Custom
 *.g.dart
 *.freezed.dart
+.env
 
 # Miscellaneous
 *.class
