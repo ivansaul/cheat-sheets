@@ -6,7 +6,6 @@ import 'package:cheat_sheets/src/features/cheatsheets/presentation/widgets/custo
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:cheat_sheets/src/shared/screens/error_screen.dart';
 import 'package:cheat_sheets/src/shared/screens/loading_screen.dart';
-import 'package:cheat_sheets/src/shared/widgets/app_theme_toggle_button.dart';
 import 'package:cheat_sheets/src/shared/widgets/markdown_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -93,10 +92,6 @@ class _AppBarView extends StatelessWidget implements PreferredSizeWidget {
           ],
         ),
       ),
-      actions: [
-        const AppThemeToggleButton(),
-        const Gap(10),
-      ],
     );
   }
 

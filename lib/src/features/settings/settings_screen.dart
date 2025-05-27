@@ -1,5 +1,6 @@
 import 'package:cheat_sheets/src/constants/constants.dart';
 import 'package:cheat_sheets/src/extensions/context.dart';
+import 'package:cheat_sheets/src/extensions/nullable.dart';
 import 'package:cheat_sheets/src/extensions/string.dart';
 import 'package:cheat_sheets/src/extensions/text_style.dart';
 import 'package:cheat_sheets/src/shared/providers/app_info_provider.dart';
@@ -34,7 +35,10 @@ class SettingsScreen extends ConsumerWidget {
             ),
             ListTile(
               title: const Text('Theme'),
-              subtitle: themeMode != null ? Text(themeMode.name.capitalize()) : null,
+              subtitle: themeMode.fold(
+                () => const Text('Loading...'),
+                (mode) => Text(mode.name.capitalize()),
+              ),
               onTap: () => _showDialogTheme(context, ref),
             ),
             // TODO: Implement Code Style
@@ -136,6 +140,14 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
               leading: const Icon(Icons.dark_mode_rounded),
               onTap: () {
                 themeModeNotifier.setTheme(ThemeMode.dark);
+                context.pop();
+              },
+            ),
+            ListTile(
+              title: const Text('System'),
+              leading: const Icon(Icons.auto_awesome_rounded),
+              onTap: () {
+                themeModeNotifier.setTheme(ThemeMode.system);
                 context.pop();
               },
             ),

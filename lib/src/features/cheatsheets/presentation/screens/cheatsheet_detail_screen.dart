@@ -1,5 +1,4 @@
 import 'package:cheat_sheets/src/features/cheatsheets/domain/cheatsheet.dart';
-import 'package:cheat_sheets/src/shared/widgets/app_theme_toggle_button.dart';
 import 'package:cheat_sheets/src/shared/widgets/markdown_widget.dart';
 import 'package:cheat_sheets/src/shared/widgets/popup_code_style_menu.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
@@ -44,7 +43,6 @@ class _AppBarView extends ConsumerWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(title),
       actions: [
-        const AppThemeToggleButton(),
         PopupCodeStyleMenu(
           onSelected: ref.read(codeStyleProvider.notifier).toggle,
         ),

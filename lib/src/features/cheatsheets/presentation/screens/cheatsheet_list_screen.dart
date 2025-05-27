@@ -1,7 +1,6 @@
 import 'package:cheat_sheets/src/features/cheatsheets/presentation/providers/cheatsheet_providers.dart';
 import 'package:cheat_sheets/src/features/cheatsheets/presentation/widgets/custom_list_tile.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
-import 'package:cheat_sheets/src/shared/widgets/app_theme_toggle_button.dart';
 import 'package:cheat_sheets/src/shared/widgets/async_value_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,7 +24,6 @@ class CheatsheetListScreen extends ConsumerWidget {
           ),
         ),
         actions: [
-          const AppThemeToggleButton(),
           IconButton(
             onPressed: () => const CheatsheetSearchRoute().go(context),
             icon: const Icon(
