@@ -29,7 +29,7 @@ class SettingsScreen extends ConsumerWidget {
               padding: const EdgeInsets.only(top: 20.0, left: 15.0),
               child: Text(
                 'General',
-                style: context.textTheme.titleMedium?.tsBold(),
+                style: context.textTheme.titleMedium?.bold(),
               ),
             ),
             ListTile(
@@ -118,7 +118,7 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
       return AlertDialog(
         title: Text(
           'Theme',
-          style: context.textTheme.titleMedium?.tsBold(),
+          style: context.textTheme.titleMedium?.bold(),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,

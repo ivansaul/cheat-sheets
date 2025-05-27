@@ -82,12 +82,13 @@ class _AppBarView extends StatelessWidget implements PreferredSizeWidget {
           children: [
             TextSpan(
               text: '$title ',
-              style: context.textTheme.titleLarge?.tsBold(),
+              style: context.textTheme.titleLarge?.bold(),
             ),
             TextSpan(
               text: 'cheatsheet',
-              style:
-                  context.textTheme.titleLarge?.tsBold().tsColor(Colors.grey),
+              style: context.textTheme.titleLarge
+                  ?.bold()
+                  .foregroundColor(Colors.grey),
             ),
           ],
         ),
