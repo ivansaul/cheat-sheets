@@ -32,7 +32,18 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
             label: 'Cheatsheets',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.attach_money_rounded),
+            icon: Badge(
+              offset: Offset(10, -3),
+              backgroundColor: Colors.blue,
+              label: Text(
+                'BETA',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 7,
+                ),
+              ),
+              child: Icon(Icons.attach_money_rounded),
+            ),
             label: 'Coupons',
           ),
           BottomNavigationBarItem(
