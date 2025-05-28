@@ -5,7 +5,6 @@ import 'package:cheat_sheets/src/features/coupons/presentation/providers/coupon_
 import 'package:cheat_sheets/src/features/coupons/presentation/widgets/coupon_card.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:cheat_sheets/src/shared/widgets/async_value_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -44,38 +43,38 @@ class CouponListScreen extends HookConsumerWidget {
       ),
       body: AsyncValueWidget(
         asyncValue: couponListAsync,
-        data: (listCoupon) => CustomScrollView(
-          controller: scrollController,
-          slivers: <Widget>[
-            CupertinoSliverRefreshControl(
-              onRefresh: notifier.onRefresh,
-            ),
-            SliverToBoxAdapter(
-              child: Text(
-                "Coupons",
-                style: GoogleFonts.notoSans().copyWith(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 1.5,
-                ),
-              ).paddingOnly(left: 15),
-            ),
-            const SliverGap(20),
-            SliverList.separated(
-              itemCount: listCoupon.length,
-              separatorBuilder: (_, __) => const Gap(15),
-              itemBuilder: (context, index) {
-                final coupon = listCoupon[index];
-                return Option.fromNullable(coupon.slug).fold(
-                  () => const SizedBox.shrink(),
-                  (slug) => CouponCard(
-                    coupon: coupon,
-                    onTap: () => CouponRoute(slug: slug).go(context),
-                  ).paddingH(15),
-                );
-              },
-            ),
-          ],
+        data: (listCoupon) => RefreshIndicator.adaptive(
+          onRefresh: notifier.onRefresh,
+          child: CustomScrollView(
+            controller: scrollController,
+            slivers: <Widget>[
+              SliverToBoxAdapter(
+                child: Text(
+                  "Coupons",
+                  style: GoogleFonts.notoSans().copyWith(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 1.5,
+                  ),
+                ).paddingOnly(left: 15),
+              ),
+              const SliverGap(20),
+              SliverList.separated(
+                itemCount: listCoupon.length,
+                separatorBuilder: (_, __) => const Gap(15),
+                itemBuilder: (context, index) {
+                  final coupon = listCoupon[index];
+                  return Option.fromNullable(coupon.slug).fold(
+                    () => const SizedBox.shrink(),
+                    (slug) => CouponCard(
+                      coupon: coupon,
+                      onTap: () => CouponRoute(slug: slug).go(context),
+                    ).paddingH(15),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
