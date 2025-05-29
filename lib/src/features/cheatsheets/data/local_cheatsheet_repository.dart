@@ -3,6 +3,7 @@ import 'dart:convert' show json;
 import 'package:cheat_sheets/src/features/cheatsheets/data/cheatsheet_repository.dart';
 import 'package:cheat_sheets/src/features/cheatsheets/domain/cheatsheet.dart';
 import 'package:cheat_sheets/src/shared/exceptions/app_exceptions.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:fpdart/fpdart.dart';
 
@@ -46,8 +47,11 @@ class LocalCheatsheetRepository implements CheatsheetRepository {
     return TaskEither.tryCatch(
       () async {
         final data = await _loadRawData();
-        _cheatsheetsMeta =
-            data.map((item) => CheatsheetMeta.fromJson(item)).toList();
+        _cheatsheetsMeta = data
+            .map((item) => CheatsheetMeta.fromJson(item))
+            .sorted((a, b) =>
+                a.title.toLowerCase().compareTo(b.title.toLowerCase()));
+
         return _cheatsheetsMeta;
       },
       (_, __) => const AppException.decodingFailure(),
