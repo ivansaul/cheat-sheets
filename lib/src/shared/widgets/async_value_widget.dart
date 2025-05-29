@@ -8,16 +8,22 @@ class AsyncValueWidget<T> extends StatelessWidget {
     super.key,
     required this.asyncValue,
     required this.data,
+    this.onRetry,
   });
 
   final AsyncValue<T> asyncValue;
   final Widget Function(T value) data;
+  final void Function()? onRetry;
 
   @override
   Widget build(BuildContext context) {
     return asyncValue.when(
       loading: () => const LoadingView(),
-      error: (e, st) => ErrorView(error: e, stackTrace: st),
+      error: (e, st) => ErrorView(
+        error: e,
+        stackTrace: st,
+        onRetry: onRetry,
+      ),
       data: data,
     );
   }
