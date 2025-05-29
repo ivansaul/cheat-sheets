@@ -9,11 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class CheatsheetsSearchScreen extends StatelessWidget {
-  const CheatsheetsSearchScreen({super.key});
+class CheatsheetSearchScreen extends StatelessWidget {
+  const CheatsheetSearchScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,10 +98,7 @@ class _ItemRowWidget extends StatelessWidget {
         ),
       ),
       subtitle: buildSubtitleView(context),
-      onTap: () => context.push(
-        AppRoutes.cheatsheet.path,
-        extra: meta.id,
-      ),
+      onTap: () => CheatsheetRoute(sheetId: meta.id).go(context),
     );
   }
 

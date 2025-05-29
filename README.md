@@ -35,11 +35,8 @@ This application is available on the [**`Google Play`**][google-play] and [**`Gi
 
 ## Screenshots
 
-<div align="center">
-<img src="https://i.imgur.com/Pnj2cKv.png" width="33%"><img src="https://i.imgur.com/4hD0dzb.png" width="33%"><img src="https://i.imgur.com/sfxo3Qw.png" width="33%">
-
-<img src="https://i.imgur.com/293myFM.png" width="33%"><img src="https://i.imgur.com/Hq1zH8N.png" width="33%"><img src="https://i.imgur.com/tV5akSg.png" width="33%">
-</div>
+![screenshot](https://imgur.com/lOKI2By.png)
+![screenshot](https://imgur.com/1cch4Nj.png)
 
 ## Building from Source
 

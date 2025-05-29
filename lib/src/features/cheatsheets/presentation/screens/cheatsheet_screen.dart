@@ -6,12 +6,10 @@ import 'package:cheat_sheets/src/features/cheatsheets/presentation/widgets/custo
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:cheat_sheets/src/shared/screens/error_screen.dart';
 import 'package:cheat_sheets/src/shared/screens/loading_screen.dart';
-import 'package:cheat_sheets/src/shared/widgets/app_theme_toggle_button.dart';
 import 'package:cheat_sheets/src/shared/widgets/markdown_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 
 class CheatsheetScreen extends ConsumerWidget {
   const CheatsheetScreen({
@@ -54,10 +52,8 @@ class CheatsheetScreen extends ConsumerWidget {
                         ),
                         leadingIcon: Assets.notesIconSvg,
                         title: section.title,
-                        onTap: () => context.push(
-                          AppRoutes.cheatsheetSection.path,
-                          extra: section,
-                        ),
+                        onTap: () =>
+                            CheatsheetDetailRoute(section).push(context),
                       ),
                     );
                   },
@@ -85,20 +81,17 @@ class _AppBarView extends StatelessWidget implements PreferredSizeWidget {
           children: [
             TextSpan(
               text: '$title ',
-              style: context.textTheme.titleLarge?.tsBold(),
+              style: context.textTheme.titleLarge?.bold(),
             ),
             TextSpan(
               text: 'cheatsheet',
-              style:
-                  context.textTheme.titleLarge?.tsBold().tsColor(Colors.grey),
+              style: context.textTheme.titleLarge
+                  ?.bold()
+                  .foregroundColor(Colors.grey),
             ),
           ],
         ),
       ),
-      actions: [
-        const AppThemeToggleButton(),
-        const Gap(10),
-      ],
     );
   }
 

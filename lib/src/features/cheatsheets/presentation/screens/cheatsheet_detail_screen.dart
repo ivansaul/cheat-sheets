@@ -1,5 +1,4 @@
 import 'package:cheat_sheets/src/features/cheatsheets/domain/cheatsheet.dart';
-import 'package:cheat_sheets/src/shared/widgets/app_theme_toggle_button.dart';
 import 'package:cheat_sheets/src/shared/widgets/markdown_widget.dart';
 import 'package:cheat_sheets/src/shared/widgets/popup_code_style_menu.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
@@ -7,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 
-class CheatsheetSectionScreen extends ConsumerWidget {
-  const CheatsheetSectionScreen({
+class CheatsheetDetailScreen extends ConsumerWidget {
+  const CheatsheetDetailScreen({
     super.key,
     required this.section,
   });
@@ -44,7 +43,6 @@ class _AppBarView extends ConsumerWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(title),
       actions: [
-        const AppThemeToggleButton(),
         PopupCodeStyleMenu(
           onSelected: ref.read(codeStyleProvider.notifier).toggle,
         ),

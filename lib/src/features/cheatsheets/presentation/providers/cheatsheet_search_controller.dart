@@ -25,7 +25,7 @@ class CheatsheetSearchController extends _$CheatsheetSearchController {
   }
 
   Future<List<CheatsheetMeta>> _fetchCheatsheets() async {
-    return ref.watch(cheatsheetsControllerProvider.future);
+    return ref.watch(cheatsheetListControllerProvider.future);
   }
 
   Future<List<CheatsheetMeta>> _filterCheatsheets(String query) async {

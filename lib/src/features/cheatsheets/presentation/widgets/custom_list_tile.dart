@@ -48,7 +48,7 @@ class CustomListTile extends StatelessWidget {
             ),
             title: Text(
               title,
-              style: context.textTheme.titleMedium?.tsBold(),
+              style: context.textTheme.titleMedium?.bold(),
             ),
             trailing: const Icon(Icons.chevron_right),
           ),
