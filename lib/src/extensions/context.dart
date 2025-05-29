@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 extension ContextExtensions on BuildContext {
   double get height => MediaQuery.of(this).size.height;
   double get width => MediaQuery.of(this).size.width;
+  EdgeInsets get padding => MediaQuery.of(this).padding;
+  double get navigationBarHeight => kToolbarHeight + padding.top;
 
   ColorsExtension get appColor => Theme.of(this).extension<ColorsExtension>()!;
 

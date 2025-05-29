@@ -37,6 +37,11 @@ class CouponListController extends _$CouponListController {
     await future;
   }
 
+  Future<void> onRetry() async {
+    state = const AsyncLoading();
+    ref.invalidateSelf();
+  }
+
   Future<List<Coupon>> _init() async {
     final response = await _fetchCoupons().run();
     if (response.isRight()) _currentPage++;
