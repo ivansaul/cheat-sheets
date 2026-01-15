@@ -1,3 +1,4 @@
+import 'package:cheat_sheets/src/features/coupons/domain/converter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'coupon.g.dart';
@@ -28,6 +29,7 @@ class Coupon {
   final String? name;
   final String? description;
   final String? content;
+  @DoubleConverter()
   final double? price;
   final double? salePrice;
   final DateTime? saleStart;
