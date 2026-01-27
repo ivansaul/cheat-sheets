@@ -1,25 +1,21 @@
-import 'package:cheat_sheets/src/shared/exceptions/app_exceptions.dart';
+import 'package:cheat_sheets/src/shared/services/network/network_exception.dart';
 import 'package:cheat_sheets/src/shared/services/network/network_service.dart';
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
 
-class DioNetworkService extends NetworkService {
+class DioNetworkService implements NetworkService {
   final _dio = Dio()..interceptors.add(_ErrorInterceptors());
 
   @override
-  TaskEither<AppException, T> request<T, R>(
+  TaskEither<NetworkException, NetworkResponse> request(
     NetworkResource resource,
-    T Function(R data) parser,
   ) {
-    return _request<R>(resource).flatMap(
-      (data) => Either.tryCatch(
-        () => parser(data),
-        (e, st) => AppException.decodingFailure(error: e, stackTrace: st),
-      ).toTaskEither(),
-    );
+    return _request(resource);
   }
 
-  TaskEither<AppException, R> _request<R>(NetworkResource resource) {
+  TaskEither<NetworkException, NetworkResponse> _request(
+    NetworkResource resource,
+  ) {
     return TaskEither.tryCatch(
       () async {
         final response = await _dio.request(
@@ -31,19 +27,18 @@ class DioNetworkService extends NetworkService {
           data: resource.body,
           queryParameters: resource.queryParam,
         );
-        return response.data as R;
+        return NetworkResponse(
+          statusCode: response.statusCode,
+          data: response.data,
+        );
       },
       (error, st) {
-        if (error is DioException && error.error is AppException) {
-          return (error.error as AppException)
+        if (error is DioException && error.error is NetworkException) {
+          return (error.error as NetworkException)
               .copyWith(error: error, stackTrace: st);
         }
 
-        if (error is TypeError) {
-          return AppException.decodingFailure(error: error, stackTrace: st);
-        }
-
-        return AppException.unknown(error: error, stackTrace: st);
+        return NetworkException.unknown(error: error, stackTrace: st);
       },
     );
   }
@@ -82,10 +77,11 @@ class _ErrorInterceptors extends Interceptor {
       DioExceptionType.connectionTimeout ||
       DioExceptionType.sendTimeout ||
       DioExceptionType.receiveTimeout =>
-        const AppException.requestTimeout(),
-      DioExceptionType.connectionError => const AppException.noConnection(),
-      DioExceptionType.badResponse => _mapStatusCode(status),
-      _ => const AppException.unknown(),
+        NetworkException.timeout(error: err, stackTrace: StackTrace.current),
+      DioExceptionType.connectionError => NetworkException.noConnection(
+          error: err, stackTrace: StackTrace.current),
+      DioExceptionType.badResponse => _mapStatusCode(status, err),
+      _ => NetworkException.unknown(error: err, stackTrace: StackTrace.current),
     };
 
     handler.reject(
@@ -98,18 +94,22 @@ class _ErrorInterceptors extends Interceptor {
     );
   }
 
-  AppException _mapStatusCode(int? status) {
+  NetworkException _mapStatusCode(int? status, DioException err) {
     return switch (status) {
-      400 => const AppException.badRequest(),
-      401 => const AppException.unauthorized(),
-      403 => const AppException.forbidden(),
-      404 => const AppException.notFound(),
-      429 => const AppException.tooManyRequests(),
+      401 => NetworkException.unauthorized(
+          error: err, stackTrace: StackTrace.current),
+      403 =>
+        NetworkException.forbidden(error: err, stackTrace: StackTrace.current),
+      404 =>
+        NetworkException.notFound(error: err, stackTrace: StackTrace.current),
+      429 => NetworkException.rateLimited(
+          error: err, stackTrace: StackTrace.current),
       _ when status != null && status >= 400 && status < 500 =>
-        const AppException.badRequest(),
+        NetworkException.badRequest(error: err, stackTrace: StackTrace.current),
       _ when status != null && status >= 500 && status < 600 =>
-        const AppException.serverError(),
-      _ => const AppException.unknown(),
+        NetworkException.serverError(
+            error: err, stackTrace: StackTrace.current),
+      _ => NetworkException.unknown(error: err, stackTrace: StackTrace.current),
     };
   }
 }

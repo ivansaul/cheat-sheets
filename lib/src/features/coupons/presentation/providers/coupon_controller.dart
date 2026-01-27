@@ -13,7 +13,7 @@ class CouponController extends _$CouponController {
 
   Future<Coupon> _init(String bySlug) async {
     final repo = ref.watch(couponRepositiryProvider);
-    final result = await repo.fetchCoupon(bySlug).run();
+    final result = await repo.get(bySlug).run();
 
     return result.getOrElse((l) => throw l);
   }

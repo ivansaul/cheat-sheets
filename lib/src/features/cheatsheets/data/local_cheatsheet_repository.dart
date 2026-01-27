@@ -22,7 +22,7 @@ class LocalCheatsheetRepository implements CheatsheetRepository {
     return _loadCheatsheets().flatMap(
       (cheatsheets) => TaskEither.tryCatch(
         () async => cheatsheets.firstWhere((element) => element.id == byId),
-        (_, __) => const AppException.notFoundItem(),
+        (_, __) => const AppException.unknown(),
       ),
     );
   }
@@ -38,7 +38,7 @@ class LocalCheatsheetRepository implements CheatsheetRepository {
         _cheatsheets = data.map((item) => Cheatsheet.fromJson(item)).toList();
         return _cheatsheets;
       },
-      (_, __) => const AppException.decodingFailure(),
+      (_, __) => const AppException.unknown(),
     );
   }
 
@@ -54,7 +54,7 @@ class LocalCheatsheetRepository implements CheatsheetRepository {
 
         return _cheatsheetsMeta;
       },
-      (_, __) => const AppException.decodingFailure(),
+      (_, __) => const AppException.unknown(),
     );
   }
 

@@ -50,6 +50,6 @@ class CouponListController extends _$CouponListController {
 
   TaskEither<AppException, List<Coupon>> _fetchCoupons() {
     final repo = ref.watch(couponRepositiryProvider);
-    return repo.fetchCouponList(page: _currentPage);
+    return repo.getList(page: _currentPage);
   }
 }
