@@ -1,6 +1,5 @@
 import 'package:cheat_sheets/src/features/cheatsheets/data/cheatsheet_repository_provider.dart';
 import 'package:cheat_sheets/src/features/cheatsheets/domain/cheatsheet.dart';
-import 'package:cheat_sheets/src/shared/exceptions/app_exceptions.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'cheatsheet_providers.g.dart';
@@ -14,10 +13,9 @@ class CheatsheetListController extends _$CheatsheetListController {
 
   Future<List<CheatsheetMeta>> _init() async {
     final repository = ref.watch(cheatsheetRepositoryProvider);
-    final result = await repository.fetchCheatsheets().run();
-
+    final result = await repository.list().run();
     return result.fold(
-      (l) => throw l.message(),
+      (l) => throw l,
       (r) => r,
     );
   }
@@ -32,10 +30,9 @@ class CheatsheetController extends _$CheatsheetController {
 
   Future<Cheatsheet> _init() async {
     final repository = ref.watch(cheatsheetRepositoryProvider);
-    final result = await repository.fetchCheatsheet(byId).run();
-
+    final result = await repository.get(byId).run();
     return result.fold(
-      (l) => throw l.message(),
+      (l) => throw l,
       (r) => r,
     );
   }

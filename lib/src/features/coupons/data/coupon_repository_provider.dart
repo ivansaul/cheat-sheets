@@ -1,5 +1,7 @@
+import 'package:cheat_sheets/src/features/coupons/data/coupon_data_source.dart';
 import 'package:cheat_sheets/src/features/coupons/data/coupon_repository.dart';
 import 'package:cheat_sheets/src/features/coupons/data/coupon_repository_impl.dart';
+import 'package:cheat_sheets/src/features/coupons/data/real_discount_data_source.dart';
 import 'package:cheat_sheets/src/shared/services/network/network_service_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -8,6 +10,16 @@ part 'coupon_repository_provider.g.dart';
 
 @Riverpod()
 CouponRepository couponRepositiry(Ref ref) {
+  final datasource = ref.watch(_couponDataSourceProvider);
+  return CouponRepositoryImpl(
+    dataSource: datasource,
+  );
+}
+
+@Riverpod()
+CouponDataSource _couponDataSource(Ref ref) {
   final networkService = ref.watch(networkServiceProvider);
-  return CouponRepositoryImpl(networkService: networkService);
+  return RealDiscountDataSource(
+    networkService: networkService,
+  );
 }
