@@ -4,7 +4,6 @@ part 'cheatsheet.g.dart';
 
 @JsonSerializable()
 class Cheatsheet {
-  @JsonKey(name: 'name')
   final String id;
   final String title;
   final List<String>? tags;
@@ -48,7 +47,6 @@ class SectionSheet {
 
 @JsonSerializable()
 class CheatsheetMeta {
-  @JsonKey(name: 'name')
   final String id;
   final String title;
   final List<String>? tags;
