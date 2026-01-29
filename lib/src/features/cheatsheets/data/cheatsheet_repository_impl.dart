@@ -5,7 +5,7 @@ import 'package:cheat_sheets/src/features/cheatsheets/domain/cheatsheet.dart';
 import 'package:cheat_sheets/src/shared/exceptions/app_exceptions.dart';
 import 'package:fpdart/fpdart.dart';
 
-class CheatsheetRepositoryImpl implements CheatsheetRepository {
+final class CheatsheetRepositoryImpl implements CheatsheetRepository {
   CheatsheetRepositoryImpl({
     required CheatsheetDataSource dataSource,
   }) : _dataSource = dataSource;
