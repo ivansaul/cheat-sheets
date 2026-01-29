@@ -1,4 +1,3 @@
-import 'package:cheat_sheets/src/constants/constants.dart';
 import 'package:cheat_sheets/src/extensions/context.dart';
 import 'package:cheat_sheets/src/extensions/text_style.dart';
 import 'package:cheat_sheets/src/features/cheatsheets/presentation/providers/cheatsheet_providers.dart';
@@ -7,6 +6,7 @@ import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:cheat_sheets/src/shared/screens/error_screen.dart';
 import 'package:cheat_sheets/src/shared/screens/loading_screen.dart';
 import 'package:cheat_sheets/src/shared/widgets/markdown_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -50,7 +50,8 @@ class CheatsheetScreen extends ConsumerWidget {
                           horizontal: 15,
                           vertical: 5,
                         ),
-                        leadingIcon: Assets.notesIconSvg,
+                        leadingIcon:
+                            const IconSource.icon(CupertinoIcons.layers_fill),
                         title: section.title,
                         onTap: () =>
                             CheatsheetDetailRoute(section).push(context),

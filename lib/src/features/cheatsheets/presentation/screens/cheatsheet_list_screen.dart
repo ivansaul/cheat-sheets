@@ -52,7 +52,7 @@ class CheatsheetListScreen extends ConsumerWidget {
                     final meta = metaList[index];
                     return CustomListTile(
                       title: meta.title,
-                      leadingIcon: meta.icon,
+                      leadingIcon: IconSource.network(meta.icon),
                       backgroundColor: meta.background != null
                           ? HexColor(meta.background!)
                           : Colors.blue,
