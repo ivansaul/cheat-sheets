@@ -48,21 +48,24 @@ class CheatsheetListScreen extends ConsumerWidget {
               child: AsyncValueWidget(
                 onRetry: cheatsheetListNotifier.onRetry,
                 asyncValue: cheatsheetsAsync,
-                data: (metaList) => ListView.separated(
-                  itemCount: metaList.length,
-                  separatorBuilder: (_, __) => const Gap(20),
-                  itemBuilder: (context, index) {
-                    final meta = metaList[index];
-                    return CustomListTile(
-                      title: meta.title,
-                      leadingIcon: IconSource.network(meta.icon),
-                      backgroundColor: meta.background != null
-                          ? HexColor(meta.background!)
-                          : Colors.blue,
-                      onTap: () =>
-                          CheatsheetRoute(sheetId: meta.id).go(context),
-                    );
-                  },
+                data: (metaList) => RefreshIndicator.adaptive(
+                  onRefresh: cheatsheetListNotifier.onRefresh,
+                  child: ListView.separated(
+                    itemCount: metaList.length,
+                    separatorBuilder: (_, __) => const Gap(20),
+                    itemBuilder: (context, index) {
+                      final meta = metaList[index];
+                      return CustomListTile(
+                        title: meta.title,
+                        leadingIcon: IconSource.network(meta.icon),
+                        backgroundColor: meta.background != null
+                            ? HexColor(meta.background!)
+                            : Colors.blue,
+                        onTap: () =>
+                            CheatsheetRoute(sheetId: meta.id).go(context),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
