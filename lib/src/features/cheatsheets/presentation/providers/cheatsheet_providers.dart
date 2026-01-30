@@ -19,6 +19,11 @@ class CheatsheetListController extends _$CheatsheetListController {
       (r) => r,
     );
   }
+
+  Future<void> onRetry() async {
+    state = const AsyncLoading();
+    ref.invalidateSelf();
+  }
 }
 
 @Riverpod()
