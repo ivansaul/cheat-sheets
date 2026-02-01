@@ -1,4 +1,5 @@
 import 'package:cheat_sheets/src/router/app_router.dart';
+import 'package:cheat_sheets/src/shared/widgets/app_startup_widget.dart';
 import 'package:cheat_sheets/src/theme/app_theme.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class MyApp extends ConsumerWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeMode,
+      builder: (_, child) => AppStartupWidget(child: child!),
     );
   }
 }
