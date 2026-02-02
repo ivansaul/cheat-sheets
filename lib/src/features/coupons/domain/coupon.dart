@@ -39,7 +39,8 @@ class Coupon {
   final String? image;
   final String? url;
   final String? store;
-  final String? type;
+  @JsonKey(unknownEnumValue: null)
+  final CouponType? type;
   final String? slug;
   final String? category;
   final String? tags;
@@ -49,4 +50,9 @@ class Coupon {
   factory Coupon.fromJson(Map<String, dynamic> json) => _$CouponFromJson(json);
 
   Map<String, dynamic> toJson() => _$CouponToJson(this);
+}
+
+enum CouponType {
+  ad,
+  external,
 }

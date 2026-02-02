@@ -53,7 +53,8 @@ final class RealDiscountDataSource implements CouponDataSource {
               stackTrace: st,
             ),
           ),
-        );
+        )
+        .map((r) => r.where((coupon) => coupon.type != CouponType.ad).toList());
     return task;
   }
 }
