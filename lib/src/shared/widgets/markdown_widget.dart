@@ -2,6 +2,7 @@ import 'package:cheat_sheets/src/extensions/context.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_highlight/themes/darcula.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:markdown_widget/config/configs.dart';
 import 'package:markdown_widget/widget/all.dart';
@@ -109,7 +110,7 @@ class _PreWrapperState extends State<_CodeWrapperWidget> {
   void initState() {
     super.initState();
     _switchWidget = const Icon(
-      Icons.copy_rounded,
+      FontAwesomeIcons.copy,
       size: 16,
     );
   }
@@ -141,7 +142,7 @@ class _PreWrapperState extends State<_CodeWrapperWidget> {
                   () {
                     hasCopied = false;
                     _switchWidget = const Icon(
-                      Icons.copy_rounded,
+                      FontAwesomeIcons.copy,
                       size: 16,
                     );
                     _refresh();

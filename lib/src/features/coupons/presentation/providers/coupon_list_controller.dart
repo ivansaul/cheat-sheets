@@ -16,7 +16,10 @@ class CouponListController extends _$CouponListController {
 
   @override
   Future<List<Coupon>> build() async {
-    ref.onDispose(() => _currentPage = 1);
+    ref.onDispose(() {
+      _currentPage = 1;
+      _debouncer.dispose();
+    });
     return _init();
   }
 
@@ -50,6 +53,6 @@ class CouponListController extends _$CouponListController {
 
   TaskEither<AppException, List<Coupon>> _fetchCoupons() {
     final repo = ref.watch(couponRepositiryProvider);
-    return repo.fetchCouponList(page: _currentPage);
+    return repo.getList(page: _currentPage);
   }
 }

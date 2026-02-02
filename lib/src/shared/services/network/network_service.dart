@@ -1,10 +1,9 @@
-import 'package:cheat_sheets/src/shared/exceptions/app_exceptions.dart';
+import 'package:cheat_sheets/src/shared/services/network/network_exception.dart';
 import 'package:fpdart/fpdart.dart';
 
 abstract class NetworkService {
-  TaskEither<AppException, T> request<T, R>(
+  TaskEither<NetworkException, NetworkResponse> request(
     NetworkResource resource,
-    T Function(R data) parser,
   );
 }
 
@@ -23,4 +22,20 @@ enum RequestType {
   put,
   delete,
   patch,
+}
+
+/// The [NetworkResponse] class contains the payload (could be transformed)
+/// that respond from the request, and other information of the response.
+class NetworkResponse {
+  NetworkResponse({
+    this.statusCode,
+    this.data,
+  });
+
+  /// The HTTP status code for the response.
+  final int? statusCode;
+
+  /// The response payload.
+  /// The content could have been parsed to a specific type.
+  final dynamic data;
 }

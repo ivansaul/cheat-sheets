@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD033 MD036 MD041 MD045 MD046 -->
+
 <div align="center">
 
 ![App Icon][app-icon]
@@ -9,7 +11,7 @@
 **`Cheat-Sheets`** Your go-to reference developer guide for learning `Python`, `Rust`, `Swift`, `JavaScript`, `Kotlin`, `Go`, `Git`, and more!
 
 ![Made-with-flutter](https://img.shields.io/badge/Made%20with-Flutter-orange)
-[![Cheat Sheet | Docs](https://github.com/ivansaul/cheat-sheets-doc/actions/workflows/docs.yaml/badge.svg)](https://github.com/ivansaul/cheat-sheets-doc/actions/workflows/docs.yaml)
+[![Deploy | API](https://github.com/ivansaul/devstack-worker/actions/workflows/deploy.yaml/badge.svg)](https://github.com/ivansaul/devstack-worker/actions/workflows/deploy.yaml)
 ![GitHub repo size](https://img.shields.io/github/repo-size/ivansaul/cheat-sheets)
 [![License: MIT](https://img.shields.io/badge/License-GPL-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -31,7 +33,7 @@
 
 ## Releases
 
-This application is available on the [**`Google Play`**][google-play] and [**`GitHub`**][github-releases].
+Available on the [**`Google Play`**][google-play] and [**`GitHub`**][github-releases].
 
 ## Screenshots
 
@@ -40,29 +42,36 @@ This application is available on the [**`Google Play`**][google-play] and [**`Gi
 
 ## Building from Source
 
-1. If you don't have Flutter SDK installed, please visit official [Flutter][flutter] site.
-2. Fetch latest source code from master branch.
+```bash
+git clone https://github.com/ivansaul/cheat-sheets.git
+cd cheat-sheets
+flutter pub get
+dart run build_runner build
+flutter run --release
+```
 
-    ```bash
-    git clone https://github.com/ivansaul/cheat-sheets.git
-    ```
+> [!TIP]
+> For full local setup, backend, and environment configuration, see [**`DEVELOPMENT GUIDE`**](./DEVELOPMENT.md).
 
-3. Run the app with Android Studio or VS Code. Or the command line.
+## Road map
 
-    ```bash
-    flutter pub get
-    flutter run
-    ```
+- [ ] Offline support
+- [ ] Localization (i18n)
+- [ ] Favorites, history & progress
+  
+## Development | Contributing
+
+Contributions are welcome! Please refer to the [**`DEVELOPMENT GUIDE`**](./DEVELOPMENT.md) for more details.
 
 ## Facing any Issue?
 
-Feel free to open an [Issue][issue] :)
+Found a bug or have an idea? Open an [Issue][issue] :)
 
 ## Contact
 
 If you want to contact me you can reach me at [Discord][discord].
 
-## Thanks
+## Acknowledgments
 
 This project is based on [Fechin/reference][reference]. The main focus of this project is adding new features and make it accessible to everyone.
 
@@ -74,7 +83,6 @@ This project uses GPLv3. See [LICENSE] for details.
 [reference]: https://github.com/Fechin/reference
 [discord]: https://discord.com/users/744755977684779038
 [issue]: https://github.com/ivansaul/cheat-sheets/issues
-[flutter]: https://flutter.dev
 [banner]: https://i.imgur.com/XjpdMoW.png
 [github-releases]: https://github.com/ivansaul/cheat-sheets/releases
 [google-play]: https://play.google.com/store/apps/details?id=com.ivansaul.cheatsheets

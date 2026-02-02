@@ -1,3 +1,4 @@
+import 'package:cheat_sheets/src/features/coupons/domain/converter.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'coupon.g.dart';
@@ -28,7 +29,9 @@ class Coupon {
   final String? name;
   final String? description;
   final String? content;
+  @DoubleConverter()
   final double? price;
+  @DoubleConverter()
   final double? salePrice;
   final DateTime? saleStart;
   final int? lectures;
@@ -37,7 +40,8 @@ class Coupon {
   final String? image;
   final String? url;
   final String? store;
-  final String? type;
+  @JsonKey(unknownEnumValue: null)
+  final CouponType? type;
   final String? slug;
   final String? category;
   final String? tags;
@@ -47,4 +51,9 @@ class Coupon {
   factory Coupon.fromJson(Map<String, dynamic> json) => _$CouponFromJson(json);
 
   Map<String, dynamic> toJson() => _$CouponToJson(this);
+}
+
+enum CouponType {
+  ad,
+  external,
 }

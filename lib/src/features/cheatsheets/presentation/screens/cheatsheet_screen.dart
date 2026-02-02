@@ -1,12 +1,11 @@
-import 'package:cheat_sheets/src/constants/constants.dart';
 import 'package:cheat_sheets/src/extensions/context.dart';
 import 'package:cheat_sheets/src/extensions/text_style.dart';
 import 'package:cheat_sheets/src/features/cheatsheets/presentation/providers/cheatsheet_providers.dart';
 import 'package:cheat_sheets/src/features/cheatsheets/presentation/widgets/custom_list_tile.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
-import 'package:cheat_sheets/src/shared/screens/error_screen.dart';
-import 'package:cheat_sheets/src/shared/screens/loading_screen.dart';
+import 'package:cheat_sheets/src/shared/widgets/async_value_widget.dart';
 import 'package:cheat_sheets/src/shared/widgets/markdown_widget.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
@@ -21,13 +20,14 @@ class CheatsheetScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final cheatsheetAsync = ref.watch(cheatsheetControllerProvider(sheetId));
-    return cheatsheetAsync.when(
-      loading: () => const LoadingScreen(),
-      error: (e, __) => ErrorScreen(message: e.toString()),
-      data: (cheatsheet) => Scaffold(
-        appBar: _AppBarView(title: cheatsheet.title),
-        body: Padding(
+    final asyncValue = ref.watch(cheatsheetControllerProvider(sheetId));
+    final notifier = ref.watch(cheatsheetControllerProvider(sheetId).notifier);
+    return Scaffold(
+      appBar: _AppBarView(title: asyncValue.valueOrNull?.title ?? ""),
+      body: AsyncValueWidget(
+        asyncValue: asyncValue,
+        onRetry: notifier.onRetry,
+        data: (cheatsheet) => Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
           child: Column(
             children: [
@@ -50,7 +50,8 @@ class CheatsheetScreen extends ConsumerWidget {
                           horizontal: 15,
                           vertical: 5,
                         ),
-                        leadingIcon: Assets.notesIconSvg,
+                        leadingIcon:
+                            const IconSource.icon(CupertinoIcons.layers_fill),
                         title: section.title,
                         onTap: () =>
                             CheatsheetDetailRoute(section).push(context),

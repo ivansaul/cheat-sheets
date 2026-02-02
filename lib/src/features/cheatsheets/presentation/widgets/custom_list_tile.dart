@@ -3,6 +3,9 @@ import 'package:cheat_sheets/src/extensions/text_style.dart';
 import 'package:cheat_sheets/src/shared/widgets/cached_svg_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'custom_list_tile.freezed.dart';
 
 class CustomListTile extends StatelessWidget {
   const CustomListTile({
@@ -11,12 +14,12 @@ class CustomListTile extends StatelessWidget {
     required this.leadingIcon,
     required this.onTap,
     this.backgroundColor,
-    this.leadingIconSize = 30,
+    this.leadingIconSize = 20,
     this.contentPadding,
   });
 
   final String title;
-  final String leadingIcon;
+  final IconSource leadingIcon;
   final void Function()? onTap;
   final Color? backgroundColor;
   final double leadingIconSize;
@@ -58,22 +61,35 @@ class CustomListTile extends StatelessWidget {
   }
 
   Widget _buildLeadingIcon(BuildContext context) {
-    return (leadingIcon.startsWith('http'))
-        ? CachedNetworkSvgPicture(
-            url: leadingIcon,
-            fit: BoxFit.fitHeight,
-            colorFilter: const ColorFilter.mode(
-              Colors.white,
-              BlendMode.srcIn,
-            ),
-          )
-        : SvgPicture.asset(
-            leadingIcon,
-            fit: BoxFit.fitHeight,
-            colorFilter: ColorFilter.mode(
-              context.colorScheme.onSurface,
-              BlendMode.srcIn,
-            ),
-          );
+    return switch (leadingIcon) {
+      IconSourceIcon(:final data) => Icon(
+          data,
+          size: leadingIconSize,
+        ),
+      IconSourceNetwork(:final url) => CachedNetworkSvgPicture(
+          url: url,
+          fit: BoxFit.fitHeight,
+          colorFilter: const ColorFilter.mode(
+            Colors.white,
+            BlendMode.srcIn,
+          ),
+        ),
+      IconSourceAsset(:final path) => SvgPicture.asset(
+          path,
+          fit: BoxFit.fitHeight,
+          colorFilter: ColorFilter.mode(
+            context.colorScheme.onSurface,
+            BlendMode.srcIn,
+          ),
+        ),
+    };
   }
+}
+
+@freezed
+sealed class IconSource with _$IconSource {
+  const IconSource._();
+  const factory IconSource.icon(IconData data) = IconSourceIcon;
+  const factory IconSource.network(String url) = IconSourceNetwork;
+  const factory IconSource.asset(String path) = IconSourceAsset;
 }

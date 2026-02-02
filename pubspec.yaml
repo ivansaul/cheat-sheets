@@ -2,7 +2,7 @@ name: cheat_sheets
 description: Cheat Sheets
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -16,10 +16,10 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 0.3.0+7
+version: 0.4.0+9
 
 environment:
-  sdk: '>=3.1.2 <4.0.0'
+  sdk: ">=3.1.2 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -32,7 +32,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   dio: ^5.8.0+1
   envied: ^1.1.1
-  flex_color_scheme: ^8.1.1
+  flex_color_scheme: ^8.4.0
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.2
@@ -46,10 +46,11 @@ dependencies:
   freezed_annotation: ^3.0.0
   gap: ^3.0.1
   go_router: ^15.1.1
-  google_fonts: ^6.2.1
+  google_fonts: ^7.1.0
   hexcolor: ^3.0.1
   hooks_riverpod: ^2.6.1
   html2md: ^1.3.2
+  internet_connection_checker_plus: ^2.9.1+2
   json_annotation: ^4.9.0
   markdown_widget: ^2.3.2+8
   package_info_plus: ^8.3.0
@@ -76,7 +77,6 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -85,7 +85,6 @@ flutter:
   assets:
     - assets/icons/
     - docs/data/
-    - docs/md/
     - shorebird.yaml
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -14,6 +14,8 @@ class CheatsheetListScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cheatsheetsAsync = ref.watch(cheatsheetListControllerProvider);
+    final cheatsheetListNotifier =
+        ref.read(cheatsheetListControllerProvider.notifier);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Quick Reference'),
@@ -44,22 +46,26 @@ class CheatsheetListScreen extends ConsumerWidget {
             const Gap(20),
             Expanded(
               child: AsyncValueWidget(
+                onRetry: cheatsheetListNotifier.onRetry,
                 asyncValue: cheatsheetsAsync,
-                data: (metaList) => ListView.separated(
-                  itemCount: metaList.length,
-                  separatorBuilder: (_, __) => const Gap(20),
-                  itemBuilder: (context, index) {
-                    final meta = metaList[index];
-                    return CustomListTile(
-                      title: meta.title,
-                      leadingIcon: meta.icon,
-                      backgroundColor: meta.background != null
-                          ? HexColor(meta.background!)
-                          : Colors.blue,
-                      onTap: () =>
-                          CheatsheetRoute(sheetId: meta.id).go(context),
-                    );
-                  },
+                data: (metaList) => RefreshIndicator.adaptive(
+                  onRefresh: cheatsheetListNotifier.onRefresh,
+                  child: ListView.separated(
+                    itemCount: metaList.length,
+                    separatorBuilder: (_, __) => const Gap(20),
+                    itemBuilder: (context, index) {
+                      final meta = metaList[index];
+                      return CustomListTile(
+                        title: meta.title,
+                        leadingIcon: IconSource.network(meta.icon),
+                        backgroundColor: meta.background != null
+                            ? HexColor(meta.background!)
+                            : Colors.blue,
+                        onTap: () =>
+                            CheatsheetRoute(sheetId: meta.id).go(context),
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
