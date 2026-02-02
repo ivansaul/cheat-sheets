@@ -16,7 +16,10 @@ class CouponListController extends _$CouponListController {
 
   @override
   Future<List<Coupon>> build() async {
-    ref.onDispose(() => _currentPage = 1);
+    ref.onDispose(() {
+      _currentPage = 1;
+      _debouncer.dispose();
+    });
     return _init();
   }
 
