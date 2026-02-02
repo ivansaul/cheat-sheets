@@ -31,6 +31,7 @@ class Coupon {
   final String? content;
   @DoubleConverter()
   final double? price;
+  @DoubleConverter()
   final double? salePrice;
   final DateTime? saleStart;
   final int? lectures;
