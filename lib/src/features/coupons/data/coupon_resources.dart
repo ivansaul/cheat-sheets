@@ -15,10 +15,10 @@ class CouponListResource implements NetworkResource {
   final String _sortBy;
 
   @override
-  String get baseURL => Env.couponBaseUrl;
+  String get baseURL => Env.apiCouponBaseUrl;
 
   @override
-  String? get path => Env.couponListPath;
+  String? get path => Env.apiCouponListEndpoint;
 
   @override
   RequestType get method => RequestType.get;
@@ -45,10 +45,10 @@ class CouponResource implements NetworkResource {
   final String _slug;
 
   @override
-  String get baseURL => Env.couponBaseUrl;
+  String get baseURL => Env.apiCouponBaseUrl;
 
   @override
-  String? get path => "${Env.couponPath}/$_slug";
+  String? get path => Env.apiCouponEndpoint.replaceFirst(":slug", _slug);
 
   @override
   RequestType get method => RequestType.get;

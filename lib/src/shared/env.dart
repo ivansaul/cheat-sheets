@@ -7,22 +7,22 @@ part 'env.g.dart';
 @Envied(path: '.env_debug', name: 'DebugEnv', obfuscate: false)
 abstract interface class Env {
   // Coupon
-  @EnviedField(varName: 'COUPON_BASE_URL')
-  static final String couponBaseUrl = switch (kDebugMode) {
-    true => _DebugEnv().couponBaseUrl,
-    false => _ProductionEnv().couponBaseUrl,
+  @EnviedField(varName: 'API_COUPON_BASE_URL')
+  static final String apiCouponBaseUrl = switch (kDebugMode) {
+    true => _DebugEnv().apiCouponBaseUrl,
+    false => _ProductionEnv().apiCouponBaseUrl,
   };
 
-  @EnviedField(varName: 'COUPON_LIST_PATH')
-  static final String couponListPath = switch (kDebugMode) {
-    true => _DebugEnv().couponListPath,
-    false => _ProductionEnv().couponListPath,
+  @EnviedField(varName: 'API_COUPON_LIST_ENDPOINT')
+  static final String apiCouponListEndpoint = switch (kDebugMode) {
+    true => _DebugEnv().apiCouponListEndpoint,
+    false => _ProductionEnv().apiCouponListEndpoint,
   };
 
-  @EnviedField(varName: 'COUPON_PATH')
-  static final String couponPath = switch (kDebugMode) {
-    true => _DebugEnv().couponPath,
-    false => _ProductionEnv().couponPath,
+  @EnviedField(varName: 'API_COUPON_ENDPOINT')
+  static final String apiCouponEndpoint = switch (kDebugMode) {
+    true => _DebugEnv().apiCouponEndpoint,
+    false => _ProductionEnv().apiCouponEndpoint,
   };
 
   // Cheatsheets
