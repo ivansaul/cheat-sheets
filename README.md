@@ -13,13 +13,13 @@
 ![Made-with-flutter](https://img.shields.io/badge/Made%20with-Flutter-orange)
 [![Deploy | API](https://github.com/ivansaul/devstack-worker/actions/workflows/deploy.yaml/badge.svg)](https://github.com/ivansaul/devstack-worker/actions/workflows/deploy.yaml)
 ![GitHub repo size](https://img.shields.io/github/repo-size/ivansaul/cheat-sheets)
-[![License: MIT](https://img.shields.io/badge/License-GPL-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: GPL](https://img.shields.io/badge/License-GPL-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <a href="https://play.google.com/store/apps/details?id=com.ivansaul.cheatsheets">
     <img alt="Google Play Badge" src="https://i.imgur.com/hWAyE3B.png" height="50px">
 </a>
 <a href="https://tinyurl.com/ivansaulAltstore">
-    <img alt="Google Play Badge" src="https://i.imgur.com/8RQIaYh.png" height="50px">
+    <img alt="AltStore" src="https://i.imgur.com/8RQIaYh.png" height="50px">
 </a>
 <a href="https://github.com/ivansaul/cheat-sheets/releases/latest">
     <img alt="GitHub Badge" src="https://i.imgur.com/NKSbyj1.png" height="50px">
