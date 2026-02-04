@@ -1,0 +1,21 @@
+{
+  "name": "Cheat Sheet",
+  "description": "Cheat Sheet documentation site",
+  "sidebar": [
+    {
+      "group": "Getting Started",
+      "pages": [
+        {
+          "title": "Home",
+          "href": "/",
+          "icon": "rocket"
+        },
+        {
+          "title": "Privacy Policy",
+          "href": "/privacy-policy",
+          "icon": "arrow-right"
+        }
+      ]
+    }
+  ]
+}
