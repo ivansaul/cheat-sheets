@@ -73,12 +73,13 @@ Once AltStore is installed, you can install the app using one of the following m
     <img alt="GitHub Badge" src="https://i.imgur.com/NKSbyj1.png" height="50px">
 </a>
 
-> [!WARNING]
+> **`[WARNING]`**
+> 
 > Opening the app via the **`OPEN`** button may cause it to not work correctly due to a deeplink issue.
 > Please open it from the **home screen icon** instead.  
 > This will be fixed in a future update.
 >
-> <img alt="Launch warning" width="40%" src="https://i.imgur.com/FpRolxK.png">
+> <img alt="Launch warning" width="70%" src="https://i.imgur.com/FpRolxK.png">
 
 </details>
 
