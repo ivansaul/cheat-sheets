@@ -2,6 +2,7 @@
 *.g.dart
 *.freezed.dart
 .env*
+site/
 
 # Miscellaneous
 *.class
