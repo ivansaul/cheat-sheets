@@ -18,7 +18,9 @@ class MyApp extends ConsumerWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeMode,
-      builder: (_, child) => AppStartupWidget(child: child!),
+      builder: (context, child) => AppStartupWidget(
+        onLoaded: (context) => child!,
+      ),
     );
   }
 }
