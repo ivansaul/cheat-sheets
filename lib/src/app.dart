@@ -1,3 +1,5 @@
+import 'package:cheat_sheets/src/i18n/app_localizations.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:cheat_sheets/src/router/app_router.dart';
 import 'package:cheat_sheets/src/shared/widgets/app_startup_widget.dart';
 import 'package:cheat_sheets/src/theme/app_theme.dart';
@@ -11,6 +13,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeControllerProvider).valueOrNull;
+    final appLocale = ref.watch(localeControllerProvider).valueOrNull;
     return MaterialApp.router(
       routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
@@ -18,6 +21,9 @@ class MyApp extends ConsumerWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: themeMode,
+      locale: appLocale?.flutterLocale,
+      supportedLocales: AppLocaleUtils.supportedLocales,
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       builder: (context, child) => AppStartupWidget(
         onLoaded: (context) => child!,
       ),
