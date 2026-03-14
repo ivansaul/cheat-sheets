@@ -3,6 +3,8 @@ import 'package:cheat_sheets/src/extensions/context.dart';
 import 'package:cheat_sheets/src/extensions/nullable.dart';
 import 'package:cheat_sheets/src/extensions/string.dart';
 import 'package:cheat_sheets/src/extensions/text_style.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:cheat_sheets/src/shared/providers/app_info_provider.dart';
 import 'package:cheat_sheets/src/shared/utils/link.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
@@ -12,6 +14,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+// TODO: Refactor this screen, it's a mess.
+
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
@@ -19,6 +23,7 @@ class SettingsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeControllerProvider).valueOrNull;
     final appInfoAsync = ref.watch(appInfoProvider);
+    final locale = ref.watch(localeControllerProvider).requireValue;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
@@ -42,11 +47,10 @@ class SettingsScreen extends ConsumerWidget {
               onTap: () => _showDialogTheme(context, ref),
             ),
             // TODO: Implement Code Style
-            // TODO: Implement Language settings
             ListTile(
               title: const Text('Language'),
-              subtitle: const Text('English'),
-              onTap: () {},
+              subtitle: Text(locale.englishName),
+              onTap: () => _showDialogLanguage(context, ref),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
@@ -152,6 +156,41 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
               },
             ),
           ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              context.pop();
+            },
+            child: const Text('CANCEL'),
+          )
+        ],
+      );
+    },
+  );
+}
+
+_showDialogLanguage(BuildContext context, WidgetRef ref) {
+  final localeNotifier = ref.read(localeControllerProvider.notifier);
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text(
+          'Language',
+          style: context.textTheme.titleMedium?.bold(),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: AppLocale.values.map((locale) {
+            return ListTile(
+              title: Text(locale.englishName),
+              onTap: () {
+                localeNotifier.setLocale(locale);
+                context.pop();
+              },
+            );
+          }).toList(),
         ),
         actions: [
           TextButton(
