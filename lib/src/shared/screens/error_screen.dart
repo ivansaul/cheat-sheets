@@ -6,9 +6,9 @@ import 'package:cheat_sheets/src/i18n/app_localizations.dart';
 import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:cheat_sheets/src/shared/exceptions/app_exceptions.dart';
 import 'package:cheat_sheets/src/shared/utils/link.dart';
-import 'package:cheat_sheets/src/shared/widgets/cached_svg_picture.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -87,8 +87,8 @@ class _UserView extends ConsumerWidget {
             style: context.textTheme.headlineMedium?.bold(),
           ),
           const Gap(20),
-          const CachedNetworkSvgPicture(
-            url: "https://files.catbox.moe/uv3d72.svg",
+          SvgPicture.asset(
+            "assets/images/error-help.svg",
             height: 200,
             fit: BoxFit.fitHeight,
           ),
