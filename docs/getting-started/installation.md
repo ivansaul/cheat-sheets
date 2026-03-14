@@ -30,11 +30,11 @@ On iOS, the app is distributed via **AltStore** (no jailbreak required).
 
 Once AltStore is installed, you can add Cheat Sheets via our custom source or by manually sideloading the `.ipa` file.
 
-=== "AltStore Source"
+=== ":fontawesome-brands-app-store-ios: AltStore Source"
 
     Add our source to your AltStore application: [AltStore Source][altstore-source]
 
-=== "Manual Installation"
+=== ":fontawesome-brands-apple: Manual Installation"
 
     Download the `.ipa` file from [GitHub Releases][github-releases] and open it with AltStore. This is the **recommended** approach.
 

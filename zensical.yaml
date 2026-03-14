@@ -141,6 +141,7 @@ nav:
   - Development:
       - development/setup.md
   - Contributing:
+      - contributing/index.md
       - contributing/guidelines.md
       - contributing/translations.md
       - contributing/report-bug.md
