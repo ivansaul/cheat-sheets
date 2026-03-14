@@ -1,6 +1,7 @@
 import 'package:cheat_sheets/src/extensions/context.dart';
 import 'package:cheat_sheets/src/features/cheatsheets/domain/cheatsheet.dart';
 import 'package:cheat_sheets/src/features/cheatsheets/presentation/providers/cheatsheet_search_controller.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:cheat_sheets/src/shared/widgets/async_value_widget.dart';
 import 'package:cheat_sheets/src/shared/widgets/cached_svg_picture.dart';
@@ -32,9 +33,10 @@ class _SearchableView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final notifier = ref.watch(cheatsheetSearchControllerProvider.notifier);
+    final loc = ref.watch(localizationsProvider).requireValue;
 
     return SearchableWidget(
-      hintText: "Search",
+      hintText: loc.sheets.search.hint,
       autoFocus: true,
       onChanged: (value) {
         notifier.onQueryChanged(value);
