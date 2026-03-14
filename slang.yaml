@@ -1,0 +1,10 @@
+base_locale: en
+fallback_strategy: base_locale
+input_directory: lib/src/i18n
+output_directory: lib/src/i18n
+output_file_name: translations.g.dart
+key_case: camel
+param_case: camel
+string_interpolation: braces
+locale_handling: false
+translation_class_visibility: public
