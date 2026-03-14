@@ -1,6 +1,8 @@
+import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class ScaffoldWithNavigationBar extends StatelessWidget {
+class ScaffoldWithNavigationBar extends ConsumerWidget {
   const ScaffoldWithNavigationBar({
     super.key,
     required this.body,
@@ -12,7 +14,8 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
   final ValueChanged<int> onDestinationSelected;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loc = ref.watch(localizationsProvider).requireValue;
     return Scaffold(
       body: body,
       bottomNavigationBar: BottomNavigationBar(
@@ -26,13 +29,13 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
         unselectedIconTheme: const IconThemeData(
           size: 20,
         ),
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.layers_rounded),
-            label: 'Cheatsheets',
+            icon: const Icon(Icons.layers_rounded),
+            label: loc.navigation.sheets,
           ),
           BottomNavigationBarItem(
-            icon: Badge(
+            icon: const Badge(
               offset: Offset(10, -3),
               backgroundColor: Colors.blue,
               label: Text(
@@ -44,11 +47,11 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
               ),
               child: Icon(Icons.attach_money_rounded),
             ),
-            label: 'Coupons',
+            label: loc.navigation.coupons,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings_rounded),
-            label: 'Settings',
+            icon: const Icon(Icons.settings_rounded),
+            label: loc.navigation.settings,
           ),
         ],
       ),

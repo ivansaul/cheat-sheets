@@ -3,6 +3,8 @@ import 'package:cheat_sheets/src/extensions/context.dart';
 import 'package:cheat_sheets/src/extensions/nullable.dart';
 import 'package:cheat_sheets/src/extensions/string.dart';
 import 'package:cheat_sheets/src/extensions/text_style.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:cheat_sheets/src/shared/providers/app_info_provider.dart';
 import 'package:cheat_sheets/src/shared/utils/link.dart';
 import 'package:cheat_sheets/src/theme/theme_provider.dart';
@@ -12,16 +14,20 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
+// TODO: Refactor this screen, it's a mess.
+
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeMode = ref.watch(themeModeControllerProvider).valueOrNull;
-    final appInfoAsync = ref.watch(appInfoProvider);
+    final themeMode = ref.watch(themeModeControllerProvider).requireValue;
+    final appInfo = ref.watch(appInfoProvider).valueOrNull;
+    final locale = ref.watch(localeControllerProvider).requireValue;
+    final loc = ref.watch(localizationsProvider).requireValue;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(loc.settings.title),
       ),
       body: SafeArea(
         child: ListView(
@@ -29,24 +35,20 @@ class SettingsScreen extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20.0, left: 15.0),
               child: Text(
-                'General',
+                loc.settings.sections.general,
                 style: context.textTheme.titleMedium?.bold(),
               ),
             ),
             ListTile(
-              title: const Text('Theme'),
-              subtitle: themeMode.fold(
-                () => const Text('Loading...'),
-                (mode) => Text(mode.name.capitalize()),
-              ),
+              title: Text(loc.settings.theme.title),
+              subtitle: Text(themeMode.name.capitalize()),
               onTap: () => _showDialogTheme(context, ref),
             ),
             // TODO: Implement Code Style
-            // TODO: Implement Language settings
             ListTile(
-              title: const Text('Language'),
-              subtitle: const Text('English'),
-              onTap: () {},
+              title: Text(loc.settings.language),
+              subtitle: Text(locale.englishName),
+              onTap: () => _showDialogLanguage(context, ref),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.0),
@@ -55,27 +57,26 @@ class SettingsScreen extends ConsumerWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20.0, left: 15.0),
               child: Text(
-                'More Options',
-                style: context.textTheme.titleMedium
-                    ?.copyWith(fontWeight: FontWeight.w900),
+                loc.settings.sections.more,
+                style: context.textTheme.titleMedium?.bold(),
               ),
             ),
             ListTile(
-              title: const Text('Author'),
+              title: Text(loc.settings.links.author),
               subtitle: const Text('@ivansaul'),
               onTap: () => openLink(Links.authorGithub),
             ),
             ListTile(
-              title: const Text('Special Thanks'),
+              title: Text(loc.settings.links.thanks),
               subtitle: const Text('@Fechin/reference'),
               onTap: () => openLink(Links.fechinReference),
             ),
             ListTile(
-              title: const Text('Contribute'),
+              title: Text(loc.settings.links.contribute),
               onTap: () => openLink(Links.projectGithub),
             ),
             ListTile(
-              title: const Text('Report an issue'),
+              title: Text(loc.settings.links.report),
               onTap: () => openLink(Links.reportIssue),
             ),
             const Gap(40),
@@ -95,15 +96,11 @@ class SettingsScreen extends ConsumerWidget {
               ),
             ),
             const Gap(10),
-            Align(
-              child: Text(
-                appInfoAsync.when(
-                  data: (state) =>
-                      '${state.appName} v${state.version} (${state.buildNumber})',
-                  error: (_, __) => 'loading',
-                  loading: () => 'loading',
+            appInfo.toWidget(
+              (info) => Align(
+                child: Text(
+                  '${info.appName} v${info.version} (${info.buildNumber})',
                 ),
-                style: context.textTheme.labelMedium,
               ),
             ),
             const Gap(10),
@@ -116,19 +113,20 @@ class SettingsScreen extends ConsumerWidget {
 
 _showDialogTheme(BuildContext context, WidgetRef ref) {
   final themeModeNotifier = ref.read(themeModeControllerProvider.notifier);
+  final loc = ref.watch(localizationsProvider).requireValue;
   return showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
         title: Text(
-          'Theme',
+          loc.settings.theme.title,
           style: context.textTheme.titleMedium?.bold(),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              title: const Text('Light'),
+              title: Text(loc.settings.theme.light),
               leading: const Icon(Icons.light_mode_rounded),
               onTap: () {
                 themeModeNotifier.setTheme(ThemeMode.light);
@@ -136,7 +134,7 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
               },
             ),
             ListTile(
-              title: const Text('Dark'),
+              title: Text(loc.settings.theme.dark),
               leading: const Icon(Icons.dark_mode_rounded),
               onTap: () {
                 themeModeNotifier.setTheme(ThemeMode.dark);
@@ -144,7 +142,7 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
               },
             ),
             ListTile(
-              title: const Text('System'),
+              title: Text(loc.settings.theme.system),
               leading: const Icon(Icons.auto_awesome_rounded),
               onTap: () {
                 themeModeNotifier.setTheme(ThemeMode.system);
@@ -158,7 +156,43 @@ _showDialogTheme(BuildContext context, WidgetRef ref) {
             onPressed: () {
               context.pop();
             },
-            child: const Text('CANCEL'),
+            child: Text(loc.common.cancel.toUpperCase()),
+          )
+        ],
+      );
+    },
+  );
+}
+
+_showDialogLanguage(BuildContext context, WidgetRef ref) {
+  final localeNotifier = ref.read(localeControllerProvider.notifier);
+  final loc = ref.watch(localizationsProvider).requireValue;
+  return showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text(
+          loc.settings.language,
+          style: context.textTheme.titleMedium?.bold(),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: AppLocale.values.map((locale) {
+            return ListTile(
+              title: Text(locale.englishName),
+              onTap: () {
+                localeNotifier.setLocale(locale);
+                context.pop();
+              },
+            );
+          }).toList(),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              context.pop();
+            },
+            child: Text(loc.common.cancel.toUpperCase()),
           )
         ],
       );

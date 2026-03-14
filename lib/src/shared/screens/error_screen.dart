@@ -2,13 +2,16 @@ import 'package:cheat_sheets/src/constants/constants.dart';
 import 'package:cheat_sheets/src/extensions/context.dart';
 import 'package:cheat_sheets/src/extensions/nullable.dart';
 import 'package:cheat_sheets/src/extensions/text_style.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:cheat_sheets/src/shared/exceptions/app_exceptions.dart';
 import 'package:cheat_sheets/src/shared/utils/link.dart';
-import 'package:cheat_sheets/src/shared/widgets/cached_svg_picture.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class ErrorScreen extends StatelessWidget {
   final String message;
@@ -28,7 +31,7 @@ class ErrorScreen extends StatelessWidget {
   }
 }
 
-class ErrorView extends StatelessWidget {
+class ErrorView extends ConsumerWidget {
   const ErrorView({
     super.key,
     required this.error,
@@ -41,7 +44,8 @@ class ErrorView extends StatelessWidget {
   final void Function()? onRetry;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loc = ref.watch(localizationsProvider).requireValue;
     return kDebugMode
         ? _DebugView(
             error: error,
@@ -49,20 +53,20 @@ class ErrorView extends StatelessWidget {
             onRetry: onRetry,
           )
         : _UserView(
-            message: _message,
+            message: _message(loc),
             onRetry: onRetry,
           );
   }
 
-  String get _message {
+  String _message(Translations loc) {
     if (error is AppException) {
-      return (error as AppException).message();
+      return (error as AppException).message(loc);
     }
-    return const AppException.unknown().message();
+    return const AppException.unknown().message(loc);
   }
 }
 
-class _UserView extends StatelessWidget {
+class _UserView extends ConsumerWidget {
   const _UserView({
     required this.message,
     this.onRetry,
@@ -72,18 +76,19 @@ class _UserView extends StatelessWidget {
   final void Function()? onRetry;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loc = ref.watch(localizationsProvider).requireValue;
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            "Oops!",
+            loc.errors.labels.oops,
             style: context.textTheme.headlineMedium?.bold(),
           ),
           const Gap(20),
-          const CachedNetworkSvgPicture(
-            url: "https://files.catbox.moe/uv3d72.svg",
+          SvgPicture.asset(
+            "assets/images/error-help.svg",
             height: 200,
             fit: BoxFit.fitHeight,
           ),
@@ -99,15 +104,8 @@ class _UserView extends StatelessWidget {
             text: TextSpan(
               style: context.textTheme.bodyMedium,
               children: [
-                const TextSpan(
-                  text: "Be a part of this ",
-                ),
                 TextSpan(
-                  text: "open-source",
-                  style: context.textTheme.bodyMedium?.semibold(),
-                ),
-                const TextSpan(
-                  text: " project! Help us make this app awesome!",
+                  text: loc.community.contribute,
                 ),
               ],
             ),
@@ -120,19 +118,19 @@ class _UserView extends StatelessWidget {
               onRetry.toWidget(
                 (retry) => GestureDetector(
                   onTap: retry,
-                  child: const Chip(
+                  child: Chip(
                     padding: EdgeInsets.zero,
-                    avatar: Icon(Icons.refresh_rounded),
-                    label: Text("Try Again"),
+                    avatar: const Icon(Icons.refresh_rounded),
+                    label: Text(loc.common.retry),
                   ),
                 ),
               ),
               GestureDetector(
                 onTap: () => openLink(Links.reportIssue),
-                child: const Chip(
+                child: Chip(
                   padding: EdgeInsets.zero,
-                  avatar: Icon(FontAwesomeIcons.github),
-                  label: Text("Report an Issue"),
+                  avatar: const Icon(FontAwesomeIcons.github),
+                  label: Text(loc.errors.actions.reportIssue),
                 ),
               ),
             ],
@@ -179,7 +177,7 @@ class _DebugView extends StatelessWidget {
   }
 
   String get _message {
-    return _appException?.message() ?? error.toString();
+    return _appException?.toString() ?? error.toString();
   }
 
   String? get _error {

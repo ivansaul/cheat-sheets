@@ -2,6 +2,7 @@ import 'package:cheat_sheets/src/extensions/context.dart';
 import 'package:cheat_sheets/src/extensions/text_style.dart';
 import 'package:cheat_sheets/src/features/cheatsheets/presentation/providers/cheatsheet_providers.dart';
 import 'package:cheat_sheets/src/features/cheatsheets/presentation/widgets/custom_list_tile.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:cheat_sheets/src/shared/widgets/async_value_widget.dart';
 import 'package:cheat_sheets/src/shared/widgets/markdown_widget.dart';
@@ -68,14 +69,15 @@ class CheatsheetScreen extends ConsumerWidget {
   }
 }
 
-class _AppBarView extends StatelessWidget implements PreferredSizeWidget {
+class _AppBarView extends ConsumerWidget implements PreferredSizeWidget {
   final String title;
   const _AppBarView({
     required this.title,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loc = ref.watch(localizationsProvider).requireValue;
     return AppBar(
       title: RichText(
         text: TextSpan(
@@ -85,7 +87,7 @@ class _AppBarView extends StatelessWidget implements PreferredSizeWidget {
               style: context.textTheme.titleLarge?.bold(),
             ),
             TextSpan(
-              text: 'cheatsheet',
+              text: loc.sheets.appbar.suffix,
               style: context.textTheme.titleLarge
                   ?.bold()
                   .foregroundColor(Colors.grey),

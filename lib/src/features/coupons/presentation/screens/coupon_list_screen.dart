@@ -3,6 +3,7 @@ import 'package:cheat_sheets/src/extensions/nullable.dart';
 import 'package:cheat_sheets/src/extensions/padding.dart';
 import 'package:cheat_sheets/src/features/coupons/presentation/providers/coupon_list_controller.dart';
 import 'package:cheat_sheets/src/features/coupons/presentation/widgets/coupon_card.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:cheat_sheets/src/shared/widgets/async_value_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,6 +23,7 @@ class CouponListScreen extends HookConsumerWidget {
     final scrollController = useScrollController();
     final couponListAsync = ref.watch(couponListControllerProvider);
     final notifier = ref.read(couponListControllerProvider.notifier);
+    final loc = ref.watch(localizationsProvider).requireValue;
 
     useEffect(() {
       void listener() {
@@ -50,7 +52,7 @@ class CouponListScreen extends HookConsumerWidget {
                 pinned: true,
                 delegate: _NavigationHeaderDelegate(
                   context: context,
-                  title: "Coupons",
+                  title: loc.coupons.title,
                 ),
               ),
               const SliverGap(20),

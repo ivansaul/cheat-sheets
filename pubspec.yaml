@@ -35,6 +35,8 @@ dependencies:
   flex_color_scheme: ^8.4.0
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_animate: ^4.5.2
   flutter_cache_manager: ^3.4.1
   flutter_highlight: ^0.7.0
@@ -57,6 +59,8 @@ dependencies:
   path_provider: ^2.1.5
   riverpod_annotation: ^2.6.1
   shared_preferences: ^2.5.3
+  slang: ^4.13.0
+  slang_flutter: ^4.13.0
   url_launcher: ^6.3.1
   win32: ^5.10.1
 
@@ -84,7 +88,8 @@ flutter:
 
   assets:
     - assets/icons/
-    - docs/data/
+    - assets/images/
+    - assets/data/
     - shorebird.yaml
   # To add assets to your application, add an assets section, like this:
   # assets:

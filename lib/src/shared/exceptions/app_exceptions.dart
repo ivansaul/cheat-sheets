@@ -1,3 +1,4 @@
+import 'package:cheat_sheets/src/i18n/app_localizations.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'app_exceptions.freezed.dart';
@@ -23,11 +24,11 @@ sealed class AppException with _$AppException {
 }
 
 extension AppExceptionMessage on AppException {
-  String message() {
+  String message(Translations loc) {
     return switch (this) {
-      AppExceptionNotFound() => "We couldn’t find what you're looking for.",
-      AppExceptionUnavailable() => "The requested resource is unavailable.",
-      AppExceptionUnknown() => "Something went wrong. Please try again later.",
+      AppExceptionNotFound() => loc.errors.messages.notFound,
+      AppExceptionUnavailable() => loc.errors.messages.unavailable,
+      AppExceptionUnknown() => loc.errors.messages.unknown,
     };
   }
 }

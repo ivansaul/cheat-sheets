@@ -8,6 +8,7 @@ import 'package:cheat_sheets/src/features/coupons/presentation/widgets/badge.dar
 import 'package:cheat_sheets/src/features/coupons/presentation/widgets/sale_price.dart';
 import 'package:cheat_sheets/src/features/coupons/presentation/widgets/tags_row.dart';
 import 'package:cheat_sheets/src/features/coupons/presentation/widgets/time_ago.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:cheat_sheets/src/shared/utils/link.dart';
 import 'package:cheat_sheets/src/shared/utils/markdown.dart';
 import 'package:cheat_sheets/src/shared/widgets/async_image.dart';
@@ -108,7 +109,7 @@ class _BannerView extends StatelessWidget {
   }
 }
 
-class _GetCourseButton extends StatelessWidget {
+class _GetCourseButton extends ConsumerWidget {
   const _GetCourseButton(
     this.url,
   );
@@ -116,21 +117,22 @@ class _GetCourseButton extends StatelessWidget {
   final String url;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loc = ref.watch(localizationsProvider).requireValue;
     return GestureDetector(
       onTap: () => openLink(url),
-      child: const CouponBadge(
+      child: CouponBadge(
         child: Label(
           icon: FontAwesomeIcons.upRightFromSquare,
-          text: "Get course",
-          textStyle: TextStyle(fontWeight: FontWeight.bold),
+          text: loc.coupons.labels.getCourse,
+          textStyle: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
     );
   }
 }
 
-class _BadgeRowView extends StatelessWidget {
+class _BadgeRowView extends ConsumerWidget {
   const _BadgeRowView(
     this.coupon,
   );
@@ -138,7 +140,8 @@ class _BadgeRowView extends StatelessWidget {
   final Coupon coupon;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loc = ref.watch(localizationsProvider).requireValue;
     return Wrap(
       spacing: 8,
       runSpacing: 8,
@@ -150,7 +153,10 @@ class _BadgeRowView extends StatelessWidget {
           (r) => badge(FontAwesomeIcons.globe, r),
         ),
         coupon.lectures.toWidget(
-          (r) => badge(FontAwesomeIcons.solidClock, "$r hours"),
+          (r) => badge(
+            FontAwesomeIcons.solidClock,
+            loc.coupons.labels.duration(hours: r),
+          ),
         ),
         coupon.views.toWidget(
           (r) => badge(FontAwesomeIcons.solidEye, "$r"),
