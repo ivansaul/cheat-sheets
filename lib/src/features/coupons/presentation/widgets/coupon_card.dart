@@ -4,11 +4,13 @@ import 'package:cheat_sheets/src/features/coupons/domain/coupon.dart';
 import 'package:cheat_sheets/src/features/coupons/presentation/widgets/sale_price.dart';
 import 'package:cheat_sheets/src/features/coupons/presentation/widgets/tags_row.dart';
 import 'package:cheat_sheets/src/features/coupons/presentation/widgets/time_ago.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:cheat_sheets/src/shared/widgets/async_image.dart';
 import 'package:cheat_sheets/src/shared/widgets/divider.dart';
 import 'package:cheat_sheets/src/shared/widgets/label.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CouponCard extends StatelessWidget {
   const CouponCard({
@@ -97,7 +99,7 @@ class _BannerView extends StatelessWidget {
   }
 }
 
-class _LabelsRowView extends StatelessWidget {
+class _LabelsRowView extends ConsumerWidget {
   const _LabelsRowView(
     this.coupon,
   );
@@ -105,7 +107,8 @@ class _LabelsRowView extends StatelessWidget {
   final Coupon coupon;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loc = ref.watch(localizationsProvider).requireValue;
     return Row(
       spacing: 10,
       children: [
@@ -116,7 +119,7 @@ class _LabelsRowView extends StatelessWidget {
         coupon.lectures.toWidget(
           (r) => _buildLabel(
             FontAwesomeIcons.solidClock,
-            "${r.toStringAsFixed(1)} hours",
+            loc.coupons.labels.duration(hours: r.toStringAsFixed(1)),
           ),
         ),
         const Spacer(),

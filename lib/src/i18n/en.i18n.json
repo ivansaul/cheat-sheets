@@ -1,0 +1,79 @@
+{
+  "common": {
+    "cancel": "Cancel",
+    "retry": "Retry"
+  },
+  "sheets": {
+    "title": "Quick Reference",
+    "description": "Here are some cheat sheets and quick references contributed by open source angels.",
+    "appbar": {
+      "suffix": "cheatsheet"
+    },
+    "search": {
+      "hint": "Search cheatsheet"
+    }
+  },
+  "coupons": {
+    "title": "Coupons",
+    "labels": {
+      "get_course": "Get course",
+      "duration": "{hours} hours"
+    },
+    "time": {
+      "minutes_ago(param=m)": {
+        "zero": "Just now",
+        "one": "1 minute ago",
+        "other": "{m} minutes ago"
+      },
+      "hours_ago(param=h)": {
+        "one": "1 hour ago",
+        "other": "{h} hours ago"
+      },
+      "days_ago(param=d)": {
+        "one": "1 day ago",
+        "other": "{d} days ago"
+      }
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "sections": {
+      "general": "General",
+      "more": "More Options"
+    },
+    "language": "Language",
+    "theme": {
+      "title": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
+    "links": {
+      "author": "Author",
+      "thanks": "Special Thanks",
+      "contribute": "Contribute",
+      "report": "Report an issue"
+    }
+  },
+  "navigation": {
+    "sheets": "Cheatsheets",
+    "coupons": "Coupons",
+    "settings": "Settings"
+  },
+  "errors": {
+    "labels": {
+      "oops": "Oops!"
+    },
+    "actions": {
+      "report_issue": "Report an issue"
+    },
+    "messages": {
+      "not_found": "We couldn’t find what you're looking for.",
+      "unavailable": "The requested resource is unavailable.",
+      "unknown": "Something went wrong. Please try again later."
+    }
+  },
+  "community": {
+    "contribute": "Be a part of this open-source project! Help us make this app awesome!"
+  }
+}

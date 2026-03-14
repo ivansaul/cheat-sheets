@@ -1,5 +1,6 @@
 import 'package:cheat_sheets/src/features/cheatsheets/presentation/providers/cheatsheet_providers.dart';
 import 'package:cheat_sheets/src/features/cheatsheets/presentation/widgets/custom_list_tile.dart';
+import 'package:cheat_sheets/src/i18n/app_localizations_provider.dart';
 import 'package:cheat_sheets/src/router/app_routes.dart';
 import 'package:cheat_sheets/src/shared/widgets/async_value_widget.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +17,10 @@ class CheatsheetListScreen extends ConsumerWidget {
     final cheatsheetsAsync = ref.watch(cheatsheetListControllerProvider);
     final cheatsheetListNotifier =
         ref.read(cheatsheetListControllerProvider.notifier);
+    final loc = ref.watch(localizationsProvider).requireValue;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quick Reference'),
+        title: Text(loc.sheets.title),
         leading: IconButton(
           onPressed: () => const SettingsRoute().go(context),
           icon: const Icon(
@@ -40,9 +42,7 @@ class CheatsheetListScreen extends ConsumerWidget {
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
           children: [
-            const Text(
-              'Here are some cheat sheets and quick references contributed by open source angels.',
-            ),
+            Text(loc.sheets.description),
             const Gap(20),
             Expanded(
               child: AsyncValueWidget(
