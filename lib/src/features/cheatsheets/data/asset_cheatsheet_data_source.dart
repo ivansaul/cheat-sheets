@@ -73,7 +73,7 @@ final class AssetCheatsheetDataSource implements CheatsheetDataSource {
 
   Future<List<dynamic>> _loadRawData() async {
     if (_rawData.isNotEmpty) return _rawData;
-    final jsonString = await rootBundle.loadString('docs/data/data.json');
+    final jsonString = await rootBundle.loadString('assets/data/data.json');
     _rawData = json.decode(jsonString) as List<dynamic>;
     return _rawData;
   }
