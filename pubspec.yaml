@@ -88,6 +88,7 @@ flutter:
 
   assets:
     - assets/icons/
+    - assets/images/
     - assets/data/
     - shorebird.yaml
   # To add assets to your application, add an assets section, like this:
