@@ -67,10 +67,10 @@ To make the new language visible to the iOS operating system, it must be explici
 
 ### Generate Code
 
-Update the Dart representation of the JSON files by running `build_runner`.
+Update the Dart representation of the JSON files by running.
 
 ```bash
-dart slang run slang
+dart run slang
 ```
 
 Commit your changes properly (e.g., `feat(i18n): add spanish support`) and submit a Pull Request.
