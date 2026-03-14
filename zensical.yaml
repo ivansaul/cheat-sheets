@@ -1,0 +1,148 @@
+# Project information
+site_name: Cheat Sheets
+site_url: https://cheatsheet-docs.pages.dev/
+site_description: >-
+  A collection of practical quick reference, guides, tips and tricks for learning Python, Rust, Swift, JavaScript, Kotlin, Go, Git, Java, Ruby, Docker, Dart, TypeScript, SQL, and more!
+
+# Repository
+repo_name: ivansaul/cheat-sheets
+repo_url: https://github.com/ivansaul/cheat-sheets
+edit_uri: edit/develop/docs/
+
+# Copyright
+copyright: "&copy; 2026 ivansaul"
+
+# Configuration
+theme:
+  name: material
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.footnote.tooltips
+    - content.tabs.link
+    - content.tooltips
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.path
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: lucide/sun-moon
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: lucide/sun
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: orange
+      toggle:
+        icon: lucide/moon-star
+        name: Switch to system preference
+  favicon: assets/zensical.png
+  logo: assets/zensical.svg
+  icon:
+    tag:
+      default: lucide/hash
+  font:
+    text: Space Grotesk
+    code: JetBrains Mono
+
+# Plugins
+plugins:
+  - search
+  - tags
+
+# Additional configuration
+extra:
+  homepage: /
+  scope: /
+  annotate:
+    json: [.s2]
+  status:
+    new: Recently added
+    deprecated: Deprecated
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ivansaul/cheat-sheets
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/tDvybtJ7y9
+  tags:
+    default: default
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:zensical.extensions.emoji.to_svg
+      emoji_index: !!python/name:zensical.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.quotes:
+      callouts: true
+  - pymdownx.magiclink:
+      normalize_issue_symbols: true
+      repo_url_shorthand: true
+      user: ivansaul
+      repo: kora
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Page tree
+nav:
+  - Home:
+      - index.md
+  - Getting Started:
+      - getting-started/installation.md
+  - Development:
+      - development/setup.md
+  - Contributing:
+      - contributing/guidelines.md
+      - contributing/translations.md
+      - contributing/report-bug.md
+  - About:
+      - about/privacy-policy.md
