@@ -7,7 +7,7 @@ site_description: >-
 # Repository
 repo_name: ivansaul/cheat-sheets
 repo_url: https://github.com/ivansaul/cheat-sheets
-edit_uri: edit/master/docs/
+edit_uri: edit/develop/docs/
 
 # Copyright
 copyright: "&copy; 2026 ivansaul"
