@@ -43,6 +43,16 @@ Cheat Sheets is available for **`Android`** and **`iOS`** devices. For detailed 
 ![screenshot](https://imgur.com/lOKI2By.png)
 ![screenshot](https://imgur.com/1cch4Nj.png)
 
+## Translations
+
+Special thanks to **[Weblate](https://weblate.org/)** for providing a professional localization platform for this open-source project. 
+
+If you want to help translate **Cheat Sheets** into your language, you can do so through the [Weblate portal](https://hosted.weblate.org/projects/cheatsheets/).
+
+<a href="https://hosted.weblate.org/engage/cheatsheets/">
+  <img src="https://hosted.weblate.org/widget/cheatsheets/multi-auto.svg" alt="Translation status" />
+</a>    
+
 ## Development and Contributing
 
 Contributions are welcome! Please refer to the [Contributing Guide][contributing-guide] for more details.

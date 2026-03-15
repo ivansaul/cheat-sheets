@@ -9,6 +9,17 @@ Cheat Sheets uses [`slang`][slang] to provide type-safe localization. Translatio
 
   [slang]: https://pub.dev/packages/slang
 
+
+!!! quote "Acknowledgments"
+
+    Special thanks to **[Weblate](https://weblate.org/)** for providing a professional localization platform for this open-source project. 
+
+    There's no need to open pull requests for each time you want to push forward an addition or change. You can do it through [Weblate portal](https://hosted.weblate.org/projects/cheatsheets/).
+
+    <a href="https://hosted.weblate.org/engage/cheatsheets/">
+      <img src="https://hosted.weblate.org/widget/cheatsheets/multi-auto.svg" alt="Translation status" />
+    </a>  
+
 ## Add a New Language
 
 Adding a new language consists of copying the base configuration, translating the strings, and registering the new support in the project structure.
