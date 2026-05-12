@@ -14,6 +14,7 @@
 [![Deploy | API](https://github.com/ivansaul/devstack-worker/actions/workflows/deploy.yaml/badge.svg)](https://github.com/ivansaul/devstack-worker/actions/workflows/deploy.yaml)
 ![GitHub repo size](https://img.shields.io/github/repo-size/ivansaul/cheat-sheets)
 [![License: GPL](https://img.shields.io/badge/License-GPL-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/ivansaul/cheat-sheets)
 
 <a href="https://play.google.com/store/apps/details?id=com.ivansaul.cheatsheets">
     <img alt="Google Play Badge" src="https://i.imgur.com/hWAyE3B.png" height="50px">
