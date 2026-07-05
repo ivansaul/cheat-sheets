@@ -1,0 +1,79 @@
+{
+  "common": {
+    "cancel": "Cancelar",
+    "retry": "Reintentar"
+  },
+  "sheets": {
+    "appbar": {
+      "suffix": "tramposo"
+    },
+    "search": {
+      "hint": "Buscar cheatsheet"
+    },
+    "title": "Referencia rápida",
+    "description": "Aquí están algunas hojas tramposas y referencias rápidas aportadas por ángeles del código abierto."
+  },
+  "coupons": {
+    "title": "Cupones",
+    "time": {
+      "minutes_ago(param=m)": {
+        "other": "Hace {m} minutos",
+        "zero": "Ahora",
+        "one": "Hace 1 minuto"
+      },
+      "hours_ago(param=h)": {
+        "other": "Hace {h} horas",
+        "one": "Hace 1 hora"
+      },
+      "days_ago(param=d)": {
+        "one": "Hace 1 día",
+        "other": "Hace {d} días"
+      }
+    },
+    "labels": {
+      "duration": "{hours} horas",
+      "get_course": "Tomar curso"
+    }
+  },
+  "settings": {
+    "sections": {
+      "general": "General",
+      "more": "Más Opciones"
+    },
+    "language": "Idioma",
+    "theme": {
+      "title": "Tema",
+      "light": "Claro",
+      "dark": "Oscuro",
+      "system": "Sistema"
+    },
+    "links": {
+      "author": "Autor",
+      "thanks": "Agradecimientos",
+      "contribute": "Colabora",
+      "report": "Informar sobre una incidencia"
+    },
+    "title": "Ajustes"
+  },
+  "navigation": {
+    "sheets": "Cheatsheets",
+    "coupons": "Cupones",
+    "settings": "Ajustes"
+  },
+  "errors": {
+    "messages": {
+      "not_found": "No pudimos encontrar lo que estás buscando.",
+      "unavailable": "El recurso solicitado no está disponible.",
+      "unknown": "Algo fue mal. Intente otra vez más tarde."
+    },
+    "actions": {
+      "report_issue": "Informar sobre una incidencia"
+    },
+    "labels": {
+      "oops": "¡¡Oh, oh!!"
+    }
+  },
+  "community": {
+    "contribute": "¡Sé parte de este proyecto de código abierto! ¡Ayúdanos a hacer que esta aplicación sea impresionante!"
+  }
+}

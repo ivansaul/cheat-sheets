@@ -1,0 +1,79 @@
+{
+  "common": {
+    "cancel": "Отмена",
+    "retry": "Повтор"
+  },
+  "sheets": {
+    "title": "Краткий справочник",
+    "description": "Это набор шпаргалок и справочников от open source сообщества.",
+    "appbar": {
+      "suffix": "шпаргалка"
+    },
+    "search": {
+      "hint": "Искать шпаргалку"
+    }
+  },
+  "coupons": {
+    "title": "Купоны",
+    "labels": {
+      "get_course": "Получить курс",
+      "duration": "{hours} ч"
+    },
+    "time": {
+      "minutes_ago(param=m)": {
+        "zero": "Только что",
+        "one": "1 минуту назад",
+        "other": "{m} мин. назад"
+      },
+      "hours_ago(param=h)": {
+        "one": "1 час назад",
+        "other": "{h} ч. назад"
+      },
+      "days_ago(param=d)": {
+        "one": "1 день назад",
+        "other": "{d} д. назад"
+      }
+    }
+  },
+  "settings": {
+    "title": "Настройки",
+    "sections": {
+      "general": "Основные",
+      "more": "Дополнительно"
+    },
+    "language": "Язык",
+    "theme": {
+      "title": "Тема",
+      "light": "Светлая",
+      "dark": "Темная",
+      "system": "Системная"
+    },
+    "links": {
+      "author": "Автор",
+      "thanks": "Особая благодарность",
+      "contribute": "Внести вклад",
+      "report": "Сообщить об ошибке"
+    }
+  },
+  "navigation": {
+    "sheets": "Шпаргалки",
+    "coupons": "Купоны",
+    "settings": "Настройки"
+  },
+  "errors": {
+    "labels": {
+      "oops": "Ой!"
+    },
+    "actions": {
+      "report_issue": "Сообщить об ошибке"
+    },
+    "messages": {
+      "not_found": "Не удалось найти то, что вы ищете.",
+      "unavailable": "Запрошенный ресурс временно недоступен.",
+      "unknown": "Что-то пошло не так. Попробуйте позже."
+    }
+  },
+  "community": {
+    "contribute": "Стань частью проекта. Помоги нам сделать это приложение лучше!"
+  }
+}
