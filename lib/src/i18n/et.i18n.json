@@ -1,0 +1,79 @@
+{
+  "common": {
+    "cancel": "Katkesta",
+    "retry": "Proovi uuesti"
+  },
+  "sheets": {
+    "title": "Kiirülevaade",
+    "description": "Siin on mõned spikrid ja kiirülevaated, mille on koostanud avatud lähtekoodi hindavad ingelabilised.",
+    "appbar": {
+      "suffix": "spikker"
+    },
+    "search": {
+      "hint": "Otsi spikrit"
+    }
+  },
+  "settings": {
+    "title": "Seadistused",
+    "sections": {
+      "general": "Üldseadistused",
+      "more": "Lisavalikud"
+    },
+    "language": "Keel",
+    "theme": {
+      "title": "Kujundus",
+      "light": "Hele kujundus",
+      "dark": "Tume kujundus",
+      "system": "Süsteemi kujundus"
+    },
+    "links": {
+      "author": "Autor",
+      "thanks": "Eriline tänu",
+      "contribute": "Kaastöö võimalused",
+      "report": "Teata veast või probleemist"
+    }
+  },
+  "navigation": {
+    "sheets": "Spikrid",
+    "coupons": "Kupongid",
+    "settings": "Seadistused"
+  },
+  "errors": {
+    "labels": {
+      "oops": "Vaat kus lops!"
+    },
+    "actions": {
+      "report_issue": "Teata veast või probleemist"
+    },
+    "messages": {
+      "not_found": "Kohe kuidagi ei õnnestunud otsitavat leida.",
+      "unavailable": "Soovitud ressurss pole saadaval.",
+      "unknown": "Midagi läks valesti. Palun proovi hiljem uuesti."
+    }
+  },
+  "community": {
+    "contribute": "Osale selles avatud lähtekoodiga projektis! Aita meil seda rakendust veelgi paremaks muuta!"
+  },
+  "coupons": {
+    "title": "Kupongid",
+    "labels": {
+      "get_course": "Alusta kursust",
+      "duration": "{hours} tundi"
+    },
+    "time": {
+      "minutes_ago(param=m)": {
+        "zero": "Äsja",
+        "one": "1 minuti eest",
+        "other": "{m} minuti eest"
+      },
+      "hours_ago(param=h)": {
+        "one": "1 tunni eest",
+        "other": "{h} tunni eest"
+      },
+      "days_ago(param=d)": {
+        "one": "1 päeva tagasi",
+        "other": "{d} päeva tagasi"
+      }
+    }
+  }
+}

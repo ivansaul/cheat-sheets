@@ -1,0 +1,51 @@
+{
+  "common": {
+    "cancel": "Abbrechen"
+  },
+  "sheets": {
+    "title": "Kurzübersicht"
+  },
+  "coupons": {
+    "title": "Gutscheine",
+    "time": {
+      "minutes_ago(param=m)": {
+        "zero": "Gerade eben",
+        "one": "Vor einer minute",
+        "other": "vor {m} minuten"
+      },
+      "hours_ago(param=h)": {
+        "other": "{h} Stunden her"
+      },
+      "days_ago(param=d)": {
+        "one": "vor einem Tag"
+      }
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "sections": {
+      "more": "mehr Einstellungen",
+      "general": "Allgemein"
+    },
+    "language": "Sprache",
+    "theme": {
+      "title": "Thema",
+      "light": "Hell",
+      "dark": "Dunkel",
+      "system": "System"
+    },
+    "links": {
+      "author": "Autor",
+      "thanks": "Vielen Dank",
+      "report": "Fehler melden"
+    }
+  },
+  "errors": {
+    "messages": {
+      "unknown": "Etwas hat nicht funktioniert. Versuche es später nocheinmal."
+    }
+  },
+  "community": {
+    "contribute": "Werde Teil dieses Open-Source-Projekts! Hilf uns, diese App genial zu machen!"
+  }
+}
